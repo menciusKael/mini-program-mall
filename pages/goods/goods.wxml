@@ -1,0 +1,47 @@
+<!-- 引入商品列表模版 -->
+<import src='/template/vProductList/vProductList-2.wxml' />
+<!-- 引入图文模版 -->
+<import src="/template/vImageTextList/vImageTextList-1.wxml" />
+<!-- 引入搜索模版 -->
+<import src="/template/vSearch/vSearch-1.wxml" />
+
+<import src="/template/vImage/vImage-1.wxml" />
+
+
+<!-- 搜索框 -->
+<view>
+  <template is="vSearch-1" />
+</view>                                                                                                                                                                                                               
+
+<!-- 商品页面 -->
+<view class='goods-page' wx:if="{{goodsPageShow}}">
+
+  <!-- 图片 -->
+  <view class='images'>
+    <block wx:for="{{imageSrc}}" wx:key="f">
+      <template is="vImage-1" data="{{...item}}" />
+    </block>
+  </view>
+
+
+  <!-- 图文 -->
+  <view class='imgTexts'>
+    <block wx:for="{{imgText}}" wx:key="b">
+      <template is="vImageTextList-1" data="{{...item}}" />
+    </block>
+  </view>
+
+  <!-- 商品列表模版 -->
+  <block wx:for="{{productInfo}}" wx:key="c">
+    <view catchtap='toProductDetail' data-id='{{item.product_id}}'>
+      <template is="vProductList-2" data="{{...item}}" />
+    </view>
+  </block>
+
+</view>
+
+<!-- 搜索结果 -->
+<view class='searchResult' wx:if="{{searchResult}}">
+  <view class='result' wx:if="{{noResult}}"> —— 暂无搜索结果 —— </view>
+  <template is="vImageTextList" />
+</view>

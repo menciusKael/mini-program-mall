@@ -1,0 +1,28 @@
+<!-- <block wx:for="{{newsDetailData}}" wx:key="">
+ 
+</block> -->
+
+ <view class='vNewsList-detail'>
+    <!-- 新闻标题 -->
+    <view class='title'>
+      {{newsDetailData.title}}
+    </view>
+
+    <view>
+      <!-- 发布日期 -->
+      <text class='publishData'>{{newsDetailData.create_date}}</text>
+      <!-- 浏览次数 -->
+      <view class='viewNum'>
+        <image src='/images/icon/watch.png'></image>
+        <text>{{newsDetailData.hits}}次</text>
+      </view>
+    </view>
+    <!-- 新闻海报 -->
+    <view class='newsPost'>
+      <image src='{{newsDetailData.picture}}'></image>
+    </view>
+    <!-- 新闻详情 -->
+    <view class='newsDetail'>
+      <text>{{newsDetailData.description}}</text>
+    </view>
+  </view>

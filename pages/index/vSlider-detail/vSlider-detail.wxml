@@ -1,0 +1,32 @@
+<!--pages/index/swiper-detail/swiper-detail.wxml-->
+<view class='swiper-detail'>
+
+
+  <view class='info'>
+    <!-- 发布机构 -->
+    <text>翼升互动</text>
+    <!-- 发布日期 -->
+    <text>{{newsData.date}}</text>
+    <!-- 被查看次数 -->
+    <view class='watch'>
+      <image src='/images/icon/watch.png'></image>
+      <text>{{newsData.reading}}</text>
+    </view>
+    <!-- 分享 -->
+    <image catchtap='onshare' class='share' src='/images/icon/share.png'></image>
+  </view>
+
+  <!-- 标题 -->
+  <text class='title'>{{newsData.title}}</text>
+
+  <!-- 新闻详情图片 -->
+  <image class='post' src='{{newsData.imgSrc}}'></image>
+
+  <!-- 新闻详情内容 -->
+  <view>
+    <text class='detail'>
+         {{newsData.content}}
+    </text>
+  </view>
+
+</view>

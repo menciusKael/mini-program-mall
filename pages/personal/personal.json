@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "个 人",
+  "usingComponents": {
+    "userCenterList": "/component/userCenterList/userCenterList"
+  }
+} 

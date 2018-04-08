@@ -1,0 +1,34 @@
+<!-- 轮播模版 -->
+<import src="/template/vSlider/vSlider.wxml" />
+<!-- 新闻列表模版 -->
+<import src="/template/vNewsList/vNewsList.wxml" />
+<!-- 首页导航模版 -->
+<import src="/template/vQuickNav/vQuickNav.wxml" />
+
+<import src="/template/vLine/vLine.wxml" />
+
+<import src="/template/vSearch/vSearch-2.wxml" />
+
+
+<view>
+  <!-- 轮播 -->
+  <template is='vSlider' data="{{vSliderData,interval}}" />
+
+  <template is="vSearch-2" />
+
+  <!-- 首页导航 -->
+  <view class='vQuickNavBox'>
+    <template is="vQuickNav" />
+  </view>
+
+
+  <template is="vLine" />
+
+  <!-- 新闻列表 -->
+  <block wx:for="{{articleListData}}" wx:key="a">
+    <view>
+      <template is="vNewsList" data="{{...item}}" />
+    </view>
+  </block>
+
+</view>

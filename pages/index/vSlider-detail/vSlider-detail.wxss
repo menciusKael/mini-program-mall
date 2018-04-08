@@ -1,0 +1,49 @@
+.swiper-detail {
+  width: 95%;
+  margin: 25rpx 20rpx;
+}
+
+.swiper-detail .title {
+  font-size: 60rpx;
+  font-weight: 500;
+}
+
+.swiper-detail .info {
+  display: flex;
+  flex-direction: row;
+  color: #e0d2c8;
+  margin-top: 25rpx;
+  font-size: 32rpx;
+  margin-bottom: 15rpx;
+}
+
+.swiper-detail .info text:first-child {
+  margin-right: 40rpx;
+}
+
+.swiper-detail .info .share {
+  width: 35rpx;
+  height: 35rpx;
+  margin-top: 10rpx;
+}
+
+.swiper-detail .info .watch {
+  margin-left: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 90rpx;
+}
+
+.swiper-detail .info .watch image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 15rpx;
+}
+
+.swiper-detail .post {
+  width: 100%;
+  margin-top: 50rpx;
+}
+
+.swiper-detail .detail {
+}

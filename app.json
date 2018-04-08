@@ -1,0 +1,48 @@
+{
+  "pages": [    
+    "pages/goods/goods",
+    "pages/index/index",
+    "pages/goods/vProductList-detail/vProductList-detail",
+    "pages/index/vSlider-detail/vSlider-detail",
+    "pages/index/vNewsList-detail/vNewsList-detail",
+    "pages/sort/sort",
+    "pages/personal/personal",
+    "pages/test/test"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1C1B21",
+    "navigationBarTitleText": "首 页",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#1C1B21"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/nav/index.png",
+        "selectedIconPath": "/images/nav/indexs.png"
+      },
+      {
+        "pagePath": "pages/goods/goods",
+        "text": "商品",
+        "iconPath": "/images/nav/good.png",
+        "selectedIconPath": "/images/nav/goods.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "分类",
+        "iconPath": "/images/nav/sort.png",
+        "selectedIconPath": "/images/nav/sorts.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "个人",
+        "iconPath": "/images/nav/pensonel.png",
+        "selectedIconPath": "/images/nav/personels.png"
+      } 
+    ]
+  }
+}

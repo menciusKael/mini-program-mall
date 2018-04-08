@@ -1,0 +1,34 @@
+/* 商品列表样式 */
+@import "/template/vProductList/vProductList-2.wxss";
+
+/* 图文样式 */
+@import "/template/vImageTextList/vImageTextList-1.wxss";
+
+/* 搜索样式 */
+@import "/template/vSearch/vSearch-1.wxss";
+@import "/template/vImage/vImage-1.wxss";
+
+.images {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10rpx auto;
+  flex-wrap: wrap;
+}
+
+.imgTexts {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10rpx auto;
+  flex-wrap: wrap;
+}
+
+/* 搜索结果样式   */
+
+.searchResult .result {
+  margin: 20rpx auto;
+  text-align: center;
+  color: grey;
+  font-size: 36rpx;
+}

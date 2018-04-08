@@ -1,0 +1,27 @@
+/**app.wxss**/
+
+/* 富文本渲染插件样式 */
+
+/* @import "/wxParse/wxParse.wxss"; */
+
+page {
+  background: #f0eff5;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+html, body {
+  width: 100%;
+  font-size: 14px;
+  color: #444;
+  background-repeat: repeat;
+  overflow-x: hidden;
+}
+
+/* input[type=button], input[type=text], input[type=password] {
+  outline: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+} */

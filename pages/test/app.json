@@ -1,0 +1,32 @@
+{
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "14",
+    "backgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#ffffff",
+    "selectedColor": "#467",
+    "borderStyle": "14",
+    "list": [
+      {
+        "pagePath": "",
+        "text": "首页",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "",
+        "text": "分类",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        
+      }
+    ]
+  },
+  "pages": [
+    "pages/page_8/page_8"
+  ]
+}

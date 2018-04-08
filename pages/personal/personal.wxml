@@ -1,0 +1,16 @@
+<!--pages/personal/personal.wxml-->
+<view>
+  <view class='userInfo'>
+    <image src='/images/icon/personel.png'></image>
+    <text>请点击登录</text>
+  </view>
+
+  <userCenterList list-src="/images/icon/myOrder.png" list="订单" />
+  <userCenterList list-src="/images/icon/getAdress.png" list="收货地址" />
+  <userCenterList list-src="/images/icon/beforepay.png" list="待付款" />
+  <userCenterList list-src="/images/icon/payed.png" list="已付款" />
+  <userCenterList list-src="/images/icon/Coupon.png" list="优惠卷" />
+  <userCenterList list-src="/images/icon/tools.png" list="系统通知" />
+  <userCenterList list-src="/images/icon/integral.png" list="积分" />
+
+</view>

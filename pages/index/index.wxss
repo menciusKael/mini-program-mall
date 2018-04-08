@@ -1,0 +1,9 @@
+@import "/template/vSlider/vSlider.wxss";
+@import "/template/vNewsList/vNewsList.wxss";
+@import "/template/vQuickNav/vQuickNav.wxss";
+@import "/template/vLine/vLine.wxss";
+@import "/template/vSearch/vSearch-2.wxss";
+
+.vQuickNavBox {
+  margin: 30rpx auto;
+}

@@ -1,0 +1,25 @@
+/* pages/personal/personal.wxss */
+
+.userInfo {
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+  line-height: 300rpx;
+  background: -webkit-linear-gradient(left, #c399bd, #5db7c0); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #c399bd, #5db7c0); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #c399bd, #5db7c0); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #c399bd, #5db7c0); /* 标准的语法 */
+}
+
+.userInfo image {
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 18rpx;
+  position: relative;
+  top: 30rpx;
+}
+
+.userInfo text {
+  margin-left: 18rpx;
+  /* cursor: pointer; */
+}

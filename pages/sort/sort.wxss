@@ -1,0 +1,42 @@
+/* pages/user/user.wxss */
+.sort{
+   height: 100%;
+   box-sizing: border-box;
+   padding-left: 0rpx;
+   padding-top: 0rpx;
+}
+
+.sortBox{
+  height: 100%;
+  float: left;
+  margin-left: 0rpx;
+  margin-top: 0rpx;
+  background: #F6F6F6;
+}
+
+.sortBox text {
+  width: 220rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  display: block;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+/* 选中样式 */
+.slected{
+  background: white;
+}
+.show{
+  display: block;
+}
+.hidden{
+  display: none;
+}
+
+.sortContent{
+   background: white;
+   height: 100%;
+}

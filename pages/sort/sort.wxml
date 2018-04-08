@@ -1,0 +1,17 @@
+<!--pages/user/user.wxml-->
+<view class='sort'>
+  <!-- 分类tab -->
+  <view class='sortBox'>
+    <text class='{{currentTab == 1 ? "slected" : "" }}' data-id="1" catchtap='choose'>分类一级</text>
+    <text class='{{currentTab == 2 ? "slected" : "" }}' data-id="2" catchtap='choose'>分类二级</text>
+    <text class='{{currentTab == 3 ? "slected" : "" }}' data-id="3" catchtap='choose'>分类三级</text>
+  </view>
+  <!-- tab对应内容 -->
+  <view class='sortContent'>
+    
+    <text class='{{ currentTab == 1 ? "show" : "hidden"}}'>11111</text>
+    <text class='{{ currentTab == 2 ? "show" : "hidden"}}'>22222</text>
+    <text class='{{ currentTab == 3 ? "show" : "hidden"}}'>33333</text>
+  </view>
+<sortImg />
+</view>
