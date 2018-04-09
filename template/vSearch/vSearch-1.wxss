@@ -1,0 +1,22 @@
+/* 搜索框       文字，图标居中样式 */
+.vSearch {
+  width: 95%;
+  margin: 20rpx auto;
+  text-align: center;
+  height: 50rpx;
+}
+
+.vSearch-inp {
+  font-size: 30rpx;
+  background: white;
+  height: 30rpx;
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.vSearch-icon {
+  position: relative;
+  left: -129rpx;
+  top: -50rpx;
+  z-index: 10;
+}

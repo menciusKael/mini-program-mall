@@ -1,0 +1,58 @@
+.productList {
+  width: 95%;
+  margin: 10rpx auto;
+  display: flex;
+  position: relative;
+  height: 144rpx;
+}
+
+.productList .productLogo {
+  width: 144rpx;
+  height: 144rpx;
+}
+
+.productList .productInfo {
+  margin-left: 20rpx;
+  margin-top: 2rpx;
+  font-size: 28rpx;
+  color: #a5a5a7;
+}
+
+.productList .productInfo .name {
+  font-size: 34rpx;
+  color: #505568;
+}
+
+.productList .productInfo .price {
+  margin-top: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.productList .productInfo .price .newPrice {
+  color: red;
+}
+
+.productList .productInfo .price .oldPrice {
+  text-decoration: line-through;
+  position: absolute;
+  left: 309rpx;
+  top: 54rpx;
+}
+
+.productList .productInfo .pointAndStock .point {
+  margin-right: 20rpx;
+}
+
+.productList .productInfo .pointAndStock  .stock {
+  position: absolute;
+  left: 310rpx;
+  top: 99rpx;
+}
+
+.productList .shopCar {
+  width: 50rpx;
+  height: 40rpx;
+  position: absolute;
+  left: 636rpx;
+  top: 97rpx;
+}

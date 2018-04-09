@@ -1,0 +1,30 @@
+/* 搜索框       文字，图标 两端*/
+
+.vSearch {
+  width: 95%;
+  margin: 10rpx auto;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vSearch .vSearch-inp {
+  font-size: 30rpx;
+  background: white;
+  height: 30rpx;
+  width: 100%;
+  border-radius: 10rpx;
+  padding-left: 10rpx;
+}
+
+.vSearch .vSearch-btn {
+  width: 80rpx;
+  height: 55rpx;
+}
+
+.vSearch .vSearch-icon {
+  position: relative;
+  top: -10rpx;
+  right: 3rpx;
+  z-index: 10;
+}

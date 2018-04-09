@@ -1,0 +1,11 @@
+<template name="vNewsList">
+  <view class='newsList' catchtap='toArticleDetail' data-id="{{article_id}}">
+    <view class='image'>
+      <image mode='scaleToFill' src='{{picture}}'></image>
+    </view>
+    <view class='content'>
+      <text>{{title}}</text>
+      <text>{{keywords}}</text>
+    </view>
+  </view>
+</template>

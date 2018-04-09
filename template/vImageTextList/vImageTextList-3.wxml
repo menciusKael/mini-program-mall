@@ -1,0 +1,6 @@
+<template name="vImageTextList-3">
+  <view class='imgText'>
+    <image class='img' src='{{imgSrc}}'></image>
+    <text class='content'>{{text}}</text>
+  </view>
+</template>

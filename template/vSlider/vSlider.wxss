@@ -1,0 +1,11 @@
+.vSlider {
+  width: 100%;
+  /* 高  同时修改*/
+  height: 400rpx;
+}
+
+.vSlider-image {
+  width: 100%;
+  /* 高  同时修改*/
+  height: 400rpx;
+}

@@ -1,0 +1,12 @@
+.vImage {
+  width: 325rpx;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+
+.vImage .img {
+  width: 325rpx;
+  height: 325rpx;
+  border-radius: 20rpx;
+}

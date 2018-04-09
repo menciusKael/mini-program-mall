@@ -1,0 +1,5 @@
+<template name="vImage-1">
+  <view class='vImage'>
+    <image class='img' src='{{src}}'></image>
+  </view>
+</template>

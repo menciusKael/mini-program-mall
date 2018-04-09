@@ -1,0 +1,19 @@
+<template name='vProductList-2'>
+
+  <view class='productList' scroll-x='false' scroll-y="true">
+    <image class='productLogo' mode='scaleToFill' src='{{picture1}}'></image>
+    <view class='productInfo'>
+      <text class='name'>{{name}}</text>
+      <view class='price'>
+        <text class='newPrice'>￥{{virtual_price}}</text>
+        <text class='oldPrice'>￥{{price}}</text>
+      </view>
+      <view class='pointAndStock'>
+        <text class='point'>销量:{{point}}</text>
+        <text class='stock'>库存:{{stock}}</text>
+      </view>
+    </view>
+     <image class='shopCar' src='/images/icon/shopCar.png'></image> 
+  </view>
+
+</template>

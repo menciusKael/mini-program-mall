@@ -1,0 +1,5 @@
+<template name="vText">
+  <view class='vText'>
+    <input class='text' type='text' placeholder='我是文本'></input>
+  </view>
+</template>

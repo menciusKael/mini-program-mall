@@ -1,0 +1,16 @@
+.indexSort {
+  display: flex;
+  width: 95%;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.indexSort image {
+  width: 125rpx;
+  height: 125rpx;
+}
+
+.indexSort .title {
+  font-size: 30rpx;
+  text-align: center;
+}

@@ -1,0 +1,9 @@
+<template name="vImageTextList-1">
+  <view class='imgText'>
+    <image class='img' src='{{imgSrc}}'></image>
+    <view class='content'>
+      <text class='title'>{{text}}</text>
+      <text class='detail'>这里是简介</text>
+    </view>
+  </view>
+</template>

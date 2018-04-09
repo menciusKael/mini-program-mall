@@ -1,0 +1,14 @@
+.imgText {
+  width: 325rpx;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.imgText image {
+  width: 325rpx;
+  height: 325rpx;
+}
+
+.imgText text {
+  color: #6d6d6d;
+}

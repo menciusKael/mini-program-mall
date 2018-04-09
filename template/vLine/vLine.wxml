@@ -1,0 +1,5 @@
+<template name="vLine">
+  <view class='vLine'>
+    <view class='line'></view>
+  </view>
+</template>

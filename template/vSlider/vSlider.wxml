@@ -1,0 +1,10 @@
+<template name="vSlider">
+  <!-- interval 播放间隔 -->
+  <swiper class="vSlider" autoplay="true" interval="{{interval}}" indicator-dots="true" circular="true" catchtap='onSwiperTap'>
+    <block wx:for="{{vSliderData}}" wx:key="unique">
+      <swiper-item>
+        <image class='vSlider-image' src="{{item.imgSrc}}" data-id="{{item.imgId}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</template>

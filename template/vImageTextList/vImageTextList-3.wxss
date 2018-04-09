@@ -1,0 +1,16 @@
+.imgText {
+  width: 210rpx;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+
+.imgText .img {
+  width: 210rpx;
+  height: 210rpx;
+  
+}
+
+.imgText .content {
+  color: #6d6d6d;
+}

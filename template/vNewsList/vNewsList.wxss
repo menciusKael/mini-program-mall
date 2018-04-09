@@ -1,0 +1,33 @@
+.newsList {
+  width: 95%;
+  margin: 15rpx auto;
+  display: flex;
+  flex-direction: row;
+}
+
+/* .newsList .image{
+  width: 154rpx;
+  height: 154rpx;
+}   */
+
+.newsList image {
+  width: 154rpx;
+  height: 154rpx;
+}
+
+.newsList .content {
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx 20rpx;
+  justify-content: space-around;
+}
+
+.newsList .content text:first-child {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.newsList .content text:last-child {
+  font-size: 24rpx;
+  color: gray;
+}

@@ -1,0 +1,22 @@
+.imgText {
+  margin-top: 20rpx;
+  display: flex;
+}
+
+.imgText .img {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.imgText .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 20rpx;
+}
+
+.imgText .content .title {
+  color: #6d6d6d;
+}
+
+ 

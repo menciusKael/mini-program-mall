@@ -1,0 +1,6 @@
+<template name='vSearch-1'>
+  <view class='vSearch'>
+    <input class='vSearch-inp' type='text' value='{{searchValue}}' placeholder='请输入搜索内容' confirm-type="search" maxlength="15" bindinput='onbindinput' bindfocus='onbindfocus' bindblur='onbindblur' bindconfirm='onbindconfirm'></input>
+    <icon class='vSearch-icon' type='search' size='16' color='#999'></icon>
+  </view>
+</template>

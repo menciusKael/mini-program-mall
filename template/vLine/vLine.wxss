@@ -1,0 +1,18 @@
+.vLine {
+  width: 92%;
+  /* 高 */
+  height: 80rpx;
+  /* 控制分割线居中  值为 高的一半 */
+  padding-top: 40rpx;
+  /* 背景颜色 */
+  background: white;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.vLine .line {
+  width: 95%;
+  margin: auto;
+  /* 分割线 颜色 及样式 (实线solid，虚线dashed，点线dotted)*/
+  border-bottom: dashed 2rpx orange;
+}

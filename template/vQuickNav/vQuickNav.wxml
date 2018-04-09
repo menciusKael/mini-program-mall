@@ -1,0 +1,24 @@
+<template name="vQuickNav">
+  <view class='indexSort'>
+    <view>
+      <image src='/images/icon/allProduct.png'>
+      </image>
+      <view class='title'>所有商品</view>
+    </view>
+    <view>
+      <image src='/images/icon/myCollected.png'>
+      </image>
+       <view class='title'>我的收藏</view>
+    </view>
+    <view>
+      <image src='/images/icon/order.png'>
+      </image>
+       <view class='title'>我的订单</view>
+    </view>
+    <view>
+      <image src='/images/icon/myIntegra.png'>
+      </image>
+       <view class='title'>积分专区</view>
+    </view>
+  </view>
+</template>
