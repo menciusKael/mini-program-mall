@@ -1,0 +1,22 @@
+/* component/userCenLists/userCenLists.wxss */
+.userCenLists{
+  width: 100%;
+  height: 90rpx;
+  border-bottom: solid 2rpx #989898;
+  line-height: 90rpx;
+  padding-left: 18rpx;
+}
+.userCenLists image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 22rpx;
+}
+.userCenLists text:first-of-type{
+  font-size: 30rpx;
+  color: #989898;
+}
+.userCenLists text:last-of-type{
+  float: right;
+  margin-right: 32rpx;
+  color: #989898;
+}

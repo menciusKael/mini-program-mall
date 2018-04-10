@@ -1,0 +1,7 @@
+<!--component/userCenLists/userCenLists.wxml-->
+
+<view class='userCenLists'>
+  <image src='{{listSrc}}'></image>
+  <text>{{list}}</text>
+  <text> > </text>
+</view>
