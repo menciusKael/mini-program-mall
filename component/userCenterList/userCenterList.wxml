@@ -1,5 +1,0 @@
-<view class='userCenLists'>
-  <image class='img' src='{{listSrc}}'></image>
-  <text class='list'>{{list}}</text>
-  <text class='arr'> > </text>
-</view>
