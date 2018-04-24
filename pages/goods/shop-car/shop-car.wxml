@@ -1,0 +1,66 @@
+<view class='container' wx:if="{{!list.length}}">
+  <view class="title-box">
+    购物车空空如也(๑•́‧̫•̀๑)
+  </view>
+  <view class="toIndexBtn" bindtap="toIndexPage">
+    去逛逛
+  </view>
+</view>
+
+<view class='container' wx:if="{{list.length}}">
+
+  <checkbox-group class='goodsListBox'>
+
+    <checkbox class='goodsListItem' wx:for="{{list}}" wx:key="" checked="{{item.checked}}" catchtap='onSelectTap' data-index='{{index}}'>
+      <!-- 商品信息盒子 -->
+      <view class='goodImgAndInfo'>
+        <!-- 商品图片 -->
+        <view class='goodsImg'>
+          <image class='img' src='{{item.pic}}'></image>
+        </view>
+
+        <!-- 商品信息 -->
+        <view class='goodInfo'>
+          <view class='name'>{{item.name}}</view>
+
+          <view class='size'>
+            <block wx:for="{{item.size}}" wx:for-item="it" wx:for-index="idx" wx:key="">
+              {{idx}}:{{it}}
+            </block>
+          </view>
+
+          <view class='price'>$ {{item.price}}</view>
+        </view>
+
+        <!-- 删除 -->
+        <view class='delete'>
+          <image class='img' src='/images/icon/delete.png' data-index='{{index}}' catchtap='delItem'></image>
+        </view>
+
+        <!-- 数量加减 -->
+        <view class="buyNum">
+          <view class="cutBtn" catchtap='buyNumCut' data-index='{{index}}'>-</view>
+          <input class='inp' type="number" disabled value='{{item.buyNum}}' />
+          <view class="addBtn" catchtap='buyNumAdd' data-index='{{index}}'>+</view>
+        </view>
+
+      </view>
+
+    </checkbox>
+
+  </checkbox-group>
+
+
+  <!-- 全选、结算 -->
+  <view class="allSelectAndtoPay">
+
+    <view class="allSelTotal">
+      <checkbox class="allSelected" checked="{{allSelect?'checked':''}}" bindtap='bindAllSelect'>全选</checkbox>
+      <view class="total" hidden="{{noSelect}}">合计：¥ {{totalPrice}}</view>
+    </view>
+
+    <view class="toPayBtn" bindtap="toPayOrder">去结算</view>
+
+  </view>
+
+</view>
