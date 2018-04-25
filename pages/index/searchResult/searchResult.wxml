@@ -1,0 +1,60 @@
+<import src="/template/vNewsList/vNewsList.wxml" />
+<import src="/template/vProductList/vProductList-1.wxml" />
+
+<view class='searchInput'>
+  <!--搜索框-->
+  <view class='vSearch'>
+    <input class='vSearch-inp' type='text' value='{{searchValue}}' placeholder='请输入搜索内容' confirm-type="search" bindfocus='onbindfocus' bindblur='onbindblur' maxlength="15"></input>
+    <icon class='vSearch-icon' type='search' size='16' color='#999'></icon>
+  </view>
+  <!-- 取消 -->
+  <view class='cancel' bindtap='cancelSearch'>取消</view>
+</view>
+
+<!-- 搜索历史 -->
+<view wx:if="{{searchHistoryData.length > 0}}">
+
+  <view class='inputSocorr'>
+    <view class='inputContent'>搜索记录</view>
+    <view>
+      <image class='deImg' bindtap='delSearchHistory' src='/images/icon/delete.png'></image>
+    </view>
+  </view>
+
+  <block wx:for="{{searchHistoryData}}">
+    <view class='searchHistory'>
+      <view class='searchHistoryItem'>{{item}}</view>
+    </view>
+  </block>
+
+</view>
+
+<!-- 搜索结果 -->
+<view class='searchResult' wx:if="{{haveSearch}}">
+  <!-- 无结果 -->
+  <view class='noResult' wx:if="{{haveResult == 0}}"> 暂无相应搜索结果 ( •́ .̫ •̀ )↷↷ </view>
+
+  <!-- 搜索结果 -->
+  <view class='result' wx:if="{{haveResult == 1}}">
+
+    <view class='news' wx:if="{{articleListData.length > 0}}">
+      <view class='title'>新闻</view>
+      <template is="vNewsList" data="{{articleListData}}" />
+    </view>
+
+
+
+    <view class='product' wx:if="{{productInfo.length > 0}}">
+      <view class='title'>产品</view>
+      <block wx:for="{{productInfo}}" wx:key="b">
+        <view catchtap='toProductDetail' data-id='{{item.product_id}}'>
+          <template is="vProductList-1" data="{{...item}}" />
+        </view>
+      </block>
+    </view>
+
+
+  </view>
+
+
+</view>
