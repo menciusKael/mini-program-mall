@@ -1,24 +1,23 @@
 Page({
   data: {
-    currentSelectd: 1,// 详情与评论当前选择    
-    interval: 3000, // 自动切换时间间隔,3s
-    propPopupShow: false, // 规格选择窗口显示
-    goodsDetail: {}, // 商品详情数据
-    price: 0,//商品价格    
-    toChooseOption: '', //选择规格
-    optionSelect: {},// 选择的规格    
-    buyNumber: 0,// 购买数     
-    buyNumMin: 1,// 最少购买    
-    buyNumMax: 0,// 最多购买
-    canBuy: false, //是否已经可以购买
-    shopNum: 0,  // 购买总数
-    shopCarInfo: {},// 购物车信息
-    shopType: 'addShopCar', // 购物方式
+    currentSelectd: 1,
+    interval: 3000,
+    propPopupShow: false,
+    goodsDetail: {},
+    price: 0,
+    // toChooseOption: '',
+    optionSelect: {},
+    buyNumber: 0,
+    buyNumMin: 1,
+    buyNumMax: 0,
+    shopNum: 0,
+    shopCarInfo: {},
+    shopType: 'addShopCar',
+    onShare: false
   },
 
   onLoad: function (options) {
     var that = this;
-
     // 获取购物车信息
     wx.getStorage({
       key: 'shopCarInfo',
@@ -30,17 +29,18 @@ Page({
       }
     })
 
-    // let id = options.id;
+    let id = options.id;
+
     // 商品详情
     wx.request({
       url: 'http://mps.essocial.com.cn/api/product/getProductDetail',
       method: 'POST',
       data: {
-        product_id: '1'
+        product_id: id
       },
       success: function (res) {
         var goodsDetail = res.data.data;
-        console.log(res.data.data);
+        console.log(res);
         that.setData({
           goodsDetail,
           price: goodsDetail.basicInfo.price,
@@ -48,15 +48,15 @@ Page({
           buyNumber: goodsDetail.basicInfo.stock ? 1 : 0
         })
         // 规格
-        if (goodsDetail.option) {
-          var optionsTemp = '';
-          for (var i = 0; i < goodsDetail.option.length; i++) {
-            optionsTemp = optionsTemp + " " + goodsDetail.option[i].name
-          }
-        }
-        that.setData({
-          toChooseOption: optionsTemp
-        })
+        // if (goodsDetail.option) {
+        //   var optionsTemp = '';
+        //   for (var i = 0; i < goodsDetail.option.length; i++) {
+        //     optionsTemp = optionsTemp + " " + goodsDetail.option[i].name
+        //   }
+        // }
+        // that.setData({
+        //   toChooseOption: optionsTemp
+        // })
       },
     })
   },
@@ -78,19 +78,16 @@ Page({
           option_value: JSON.stringify(that.data.optionSelect)
         },
         success: function (res) {
-          console.log(res.data.data)
+
           if (res.data.data) {
             that.setData({
               price: res.data.data.price,
               buyNumber: res.data.data.stock ? 1 : 0,
               // buyNumMax: res.data.data.buylimit
-              canBuy: true,
             })
           } else {
-            wx.showModal({
-              title: '提示',
-              content: '暂无相应规格产品',
-              showCancel: false
+            that.setData({
+              price: 0
             })
           }
         }
@@ -108,6 +105,7 @@ Page({
     shopCarItem.name = this.data.goodsDetail.basicInfo.name;
     shopCarItem.pic = this.data.goodsDetail.pictures[0];
     shopCarItem.buyNum = this.data.buyNumber;// 单个商品购买数量
+    // shopCarItem.size = this.data.optionSelect;
     shopCarItem.size = this.data.optionSelect;
 
     // 获取购物车信息
@@ -127,7 +125,7 @@ Page({
       if (tempshopCarItem.id == shopCarItem.id && sameSize) {
         haveSomeGoodIndex = i;
         shopCarItem.buyNum = shopCarItem.buyNum + tempshopCarItem.buyNum;
-        //?
+
       }
     }
 
@@ -156,10 +154,19 @@ Page({
 
   // 加入购物车
   addShopCar() {
-    if (!this.data.canBuy) {
+    if (this.data.goodsDetail.option.length !== Object.keys(this.data.optionSelect).length) {
       wx.showModal({
         title: '提 示',
         content: '请选择规格！',
+        showCancel: false
+      })
+      return;
+    }
+
+    if (!this.data.price) {
+      wx.showModal({
+        title: '提 示',
+        content: '暂无相应规格产品',
         showCancel: false
       })
       return;
@@ -181,7 +188,7 @@ Page({
     wx.showToast({
       title: '加入购物车成功',
       icon: 'success',
-      duration: 3000
+      duration: 2000
     })
 
   },
@@ -235,13 +242,20 @@ Page({
 
   // 规格弹窗 购买数量加
   numAddTap() {
+
     if (this.data.buyNumber < this.data.buyNumMax) {
       var tempNum = this.data.buyNumber;
       tempNum++;
       this.setData({
         buyNumber: tempNum
       })
+    } else {
+      wx.showToast({
+        title: '最多购买' + this.data.buyNumMax + '件哦',
+        icon: 'none'
+      })
     }
+
   },
 
   // 规格弹窗 购买数量减
@@ -259,6 +273,13 @@ Page({
         icon: 'none'
       })
     }
+  },
+
+  // 去购物车页面
+  toShopCarPage() {
+    wx.switchTab({
+      url: '../shop-car/shop-car',
+    })
   },
 
   // 商品收藏/取消收藏
@@ -284,5 +305,32 @@ Page({
         }
       })
     }
+  },
+  // 分享  
+  onShareGood() {
+    this.setData({
+      onShare: true
+    })
+  },
+  // 取消收藏
+  oncCncelShare() {
+    this.setData({
+      onShare: false
+    })
+  },
+  // 转发
+  onShareAppMessage: function (res) {
+    return {
+      title: '翼升小程序',
+      path: '/pages/goods/vProductList-detail/vProductList-detail',
+      success: function (res) {
+        wx.showModal({
+          title: '提示',
+          content: '转发成功',
+          showCancel: false
+        })
+      }
+    }
   }
+
 })
