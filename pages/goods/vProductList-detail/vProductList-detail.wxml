@@ -1,59 +1,113 @@
-<!-- 商品详情页面 -->
 <view class='productDetail'>
   <!-- 商品图片/轮播 -->
-  <swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key="">
-      <swiper-item>
-        <image src="{{item}}" data-src="{{item}}" bindtap="previewImage"></image>
+  <swiper class='swp' indicator-dots="true" circular="true" autoplay="true" interval="{{interval}}" duration="500">
+    <block wx:for="{{goodsDetail.pictures}}" wx:key="a">
+      <swiper-item wx:if="{{item}}">
+        <image class='img' src="{{item}}" mode='aspectFit' data-src="{{index}}" bindtap="previewImage"></image>
       </swiper-item>
     </block>
   </swiper>
 
-
-  <!-- 商品基本信息、收藏、购买数量 -->
+  <!-- 基本信息 -->
   <view class='baseInfo'>
-    <!-- 基本信息 -->
-    <view class='priceInfo'>
-      <text>兰蔻 小迷你 化妆套餐</text>
-      <text>￥ {{price}}</text>
+    <view class='nameBox'>
+      <!-- 商品名  -->
+      <text class='name'>{{goodsDetail.basicInfo.name}}</text>
     </view>
 
-    <view class='beforeBuy'>
-      <!-- 收藏 -->
-      <image wx:if="{{collected}}" catchtap='onCollectTap' class='collect' src='/images/icon/collected.png'></image>
-      <image wx:else catchtap='onCollectTap' class='collect' src='/images/icon/collect.png'></image>
+    <view class='priceAndShare'>
+      <!-- 价格 -->
+      <view class='priceBox'>
+        <view class='oldPrice'>
+          ￥
+          <text class='price'>{{price}}</text>
+        </view>
+        <view class='line'></view>
+        <view class='virtual_price'>
+          原价:
+          <text class='newPrice'>￥399</text>
+        </view>
+      </view>
+
+      <!-- 分享 -->
+      <view class='share' catchtap='onShareGood'>
+        <image class='shareImg' src='/images/icon/toshare.png'></image>
+        <text class='shareBtn'>分享</text>
+      </view>
 
     </view>
+
+    <!-- 快递销量库存 -->
+    <view class='expressSaledStock'>
+      <view class='express'>
+        <text class='fre' wx:if="{{goodsDetail.basicInfo.freight > 0}}">运费: {{goodsDetail.basicInfo.freight}}</text>
+        <text class='fre' wx:else>快递： 包邮</text>
+      </view>
+      <view class='saled'>销量： 666</view>
+      <view class='stock'>库存： 999</view>
+    </view>
+
   </view>
+
   <!-- 分割线 -->
   <view class='cutline'>
   </view>
+
   <!-- 选择规格 -->
-  <view class='chooseSize'>
-    <text>选择规格</text>
-    <text style='curor:pointer' catchtap='chooseSize'> > </text>
+  <view class='chooseSize' wx:if="{{goodsDetail.option.length}}" catchtap='chooseSize'>
+    <view>请选择： 规格</view>
+    <view class='tochoose'>></view>
   </view>
-  <!-- 商品详情及评价 -->
+
+  <!-- 商品详情、参数、评价 -->
   <view class='detailCommond'>
-    <view data-id='1' catchtap='onchangeItem' class='{{currentSelectd == 1 ? "selected" : "" }}'>商品详情</view>
-    <view data-id='2' catchtap='onchangeItem' class='{{currentSelectd == 2 ? "selected" : "" }}'>商品评论</view>
+    <view class='detail' data-id='1' catchtap='onchangeItem' class='{{currentSelectd==1 ? "selected" : "" }} '>商品详情</view>
+    <view class='parameter' data-id='2' catchtap='onchangeItem' class='{{currentSelectd==2 ? "selected" : "" }} '>商品参数</view>
+    <view class='commond' data-id='3' catchtap='onchangeItem' class='{{currentSelectd==3 ? "selected" : "" }} '>商品评论</view>
   </view>
 
   <!-- 详情 -->
-  <view class='{{currentSelectd == 1 ? "show" : "hidden" }}'>
-    木有详情
+  <view class='{{currentSelectd==1 ? "show" : "hidden" }}'>
+    详情
   </view>
-  <!-- 评论 -->
-  <view class='{{currentSelectd == 2 ? "show" : "hidden" }}'>
-    木有评论
+
+  <!-- 参数 -->
+  <view class='{{currentSelectd==2 ? "show" : "hidden" }}'>
+    参数
+  </view>
+
+  <view class='{{currentSelectd==3 ? "show" : "hidden" }}'>
+    评论
   </view>
 
 
-  <view class='buy'>
+  <view class='cusSerCollectBuy'>
+    <!-- 客服 -->
+    <view class="ccbItemBox">
+      <image class='itemImg' src='/images/icon/cusSer.png'></image>
+      <view class='tip'>客服</view>
+    </view>
+
+    <!-- 收藏 -->
+    <view class='ccbItemBox'>
+      <image wx:if="{{collected}}" catchtap='onCollectTap' class='itemImg' src='/images/icon/collected.png'></image>
+      <image wx:else catchtap='onCollectTap' class='itemImg' src='/images/icon/collect.png '></image>
+      <view class='tip'> 收藏 </view>
+    </view>
+
+
+    <view class="ccbItemBox" catchtap='toShopCarPage'>
+      <image class='itemImg' src='/images/icon/shopCar.png'></image>
+      <view class="shopNum">({{shopNum}})</view>
+      <view class='tip'> 购物车 </view>
+    </view>
+
     <!-- 加入购物车 -->
-    <button type='primary'>加入购物车</button>
+    <view class='addToShopcart' type='default' bindtap='toAddShopCar'>加入购物车</view>
+
     <!-- 立即购买 -->
-    <button type='warn'>立即购买</button>
+    <view class='buyNow' type='warn' bindtap='toBuyNow'>立即购买</view>
+
   </view>
 
 
@@ -61,49 +115,88 @@
   <view class='propsPopup' wx:if='{{propPopupShow}}'>
     <!-- 蒙层 -->
     <view class='propsMask'></view>
+
     <!-- 内容 -->
     <view class='propsContent'>
-
       <view class="pop-goods-info">
         <view class="pop-img-box">
           <!-- 商品图片 -->
-          <image src="{{goodsDetail.picture1}}" class="goods-thumbnail" />
+          <image src="{{goodsDetail.pictures[0]}}" class="goods-thumbnail" />
         </view>
         <view class="pop-goods-des">
           <!-- 商品名称 -->
           <view class="pop-goods-title">{{goodsDetail.description}}</view>
           <!-- 商品价格 -->
-          <view class="pop-goods-price">¥ {{goodsDetail.virtual_price}}</view>
+          <view class="pop-goods-price">¥ {{price}}</view>
+
         </view>
         <!-- 关闭按钮 -->
         <view class="pop-goods-close" catchtap="closepropPopup"></view>
       </view>
 
       <!-- 规格 -->
-      <view wx:for="{{aaa}}">
-        <view>{{item}}</view>
-      </view>
-      <view wx:for="{{bbb}}">
-        <view>{{item}}</view>
+      <view class='optionBox'>
+        <block wx:for="{{goodsDetail.option}}" wx:for-index="idx" wx:for-item="optionItem" wx:key="a">
+          <!-- 规格名 -->
+          <view class='optionItem'>{{optionItem.name}}</view>
+          <!-- 规格选项 -->
+          <radio-group class='optionChildBox' bindchange='onBindchange' data-optionname="{{optionItem.name}}">
+            <radio class="optionChild" wx:for="{{optionItem.optionChild}}" wx:key="b" value='{{item.name}}'>
+              {{item.name}}
+            </radio>
+          </radio-group>
+        </block>
       </view>
 
+
       <!-- 数量加减 -->
-      <view class="buy-num-box">
-        <view class="num-label">购买数量</view>
-        <view class="num-box">
-          <view class="num-jian {{buyNumber == buyNumMin ? 'noLongerCut': ''}}" bindtap="numCutTap">-</view>
-          <view class="num-input">
+      <view class="numAddCut">
+        <view class="buyNum">购买数量</view>
+        <view class="numBox">
+          <view class="numCut {{buyNumber == buyNumMin ? 'noLongerCutorAdd ': ''}}" bindtap="numCutTap">-</view>
+          <view class="numInp">
             <input type="number" value="{{buyNumber}}" disabled/>
           </view>
-          <view class="num-jia {{buyNumber== buyNumMax ? 'noLongerCut': ''}}" bindtap="numAddTap">+</view>
+          <view class="numAdd {{buyNumber== buyNumMax ? 'noLongerCutorAdd ': ''}}" bindtap="numAddTap">+</view>
         </view>
       </view>
 
-      <!-- 加入购物车 -->
-      <view class="addShopCar" bindtap="addShopCar">
+      <!--选择规格界面 ： 加入购物车 -->
+      <view class="addShopCar" bindtap='addShopCar' wx:if="{{shopType == 'addShopCar'}}">
         加入购物车
       </view>
+      <view class="addShopCar" bindtap='buyNow' wx:if="{{shopType == 'buyNow'}}">
+        立即购买
+      </view>
     </view>
+  </view>
+
+  <!-- 分享弹窗 -->
+  <view wx:if="{{onShare}}">
+    <!-- 蒙层 -->
+    <view class='propsMask'></view>
+    <!-- 内容 -->
+    <view class='shareContent'>
+      <view class='shareItem'>
+        <view class='weChatFriend'>
+          <button class='shareBtn' open-type="share">
+            <image class='img' src='/images/icon/weChat.png'></image>
+          </button>
+          <view>分享给微信好友</view>
+        </view>
+        <view class='erweima'>
+          <image class='img' src='/images/icon/erWeima.png'></image>
+          <view>生成商品海报</view>
+        </view>
+      </view>
+
+      <!-- 取消 -->
+      <view class='cancelBox'>
+        <button class='cancel' bindtap='oncCncelShare'>取消</button>
+      </view>
+    </view>
+
+
   </view>
 
 </view>
