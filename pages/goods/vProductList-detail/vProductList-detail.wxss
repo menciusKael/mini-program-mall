@@ -1,80 +1,153 @@
-.productDetail swiper {
-  height: 500rpx;
+/* 轮播 */
+
+Page {
+  background-color: #fff;
 }
 
-.productDetail swiper-item image {
+.productDetail .swp {
+  height: 500rpx;
+  background-color: #ec8c70;
+}
+
+.productDetail .swp .img {
   width: 100%;
   height: 100%;
 }
 
-.productDetail .baseInfo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 20rpx;
-}
+/* 商品基本信息 */
 
-.productDetail .baseInfo .priceInfo {
+.baseInfo {
   display: flex;
   flex-direction: column;
-  margin-left: 40rpx;
+  justify-content: space-around;
+  color: #ababab;
+  font-size: 26rpx;
+  padding: 5rpx 15rpx;
+  height: 190rpx;
+}
+
+/* 商品名称 */
+
+.baseInfo .nameBox .name {
+  color: black;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+/* 价格与分享 */
+
+/* 价格 */
+
+.baseInfo .priceAndShare {
+  display: flex;
+  justify-content: space-between;
+}
+
+.baseInfo .priceAndShare .priceBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.baseInfo .priceAndShare .priceBox .oldPrice {
+  color: #ff4200;
   font-size: 30rpx;
-  justify-content: space-between;
+  font-weight: 600;
+  box-sizing: border-box;
+  padding-right: 20rpx;
 }
 
-.productDetail .baseInfo .priceInfo text:last-of-type {
-  color: red;
-}
-
-.productDetail .baseInfo .beforeBuy {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-top: 8rpx;
-  margin-right: 30rpx;
-}
-
-.productDetail .baseInfo .beforeBuy .collect {
-  width: 40rpx;
+.baseInfo .priceAndShare .priceBox .line {
+  border-left: solid 2rpx #d4d4d4;
   height: 40rpx;
-  margin-bottom: 30rpx;
-  margin-left: 99rpx;
+}
+
+.baseInfo .priceAndShare .priceBox .price {
+  color: #ff4200;
+  font-size: 50rpx;
+  font-weight: 700;
+}
+
+.baseInfo .priceAndShare .priceBox .virtual_price {
+  align-items: center;
+  display: flex;
+  padding-left: 15rpx;
+}
+
+.baseInfo .priceAndShare .priceBox .virtual_price .newPrice {
+  text-decoration: line-through;
+}
+
+/* 分享 */
+
+.baseInfo .priceAndShare .share {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.baseInfo .priceAndShare .share .shareImg {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  top: 21rpx;
+  right: 60rpx;
+  z-index: 10;
+}
+
+.other-button-hover {
+  background: white;
+}
+
+/* 快递销量库存 */
+
+.baseInfo .expressSaledStock {
+  display: flex;
+  justify-content: space-between;
 }
 
 .cutline {
   width: 100%;
   margin: 0 auto;
-  border-top: solid 4rpx lightgray;
+  border-top: solid 1rpx #f3f3f3;
   margin-top: 20rpx;
 }
 
 .productDetail .chooseSize {
   width: 100%;
-  border-bottom: solid 4rpx lightgray;
+  border-bottom: solid 1rpx #f3f3f3;
   height: 70rpx;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  padding-left: 39rpx;
+  padding-left: 36rpx;
   padding-right: 32rpx;
+  font-size: 26rpx;
+  color: #949494;
+}
+
+.productDetail .chooseSize .tochoose {
+  font-weight: 700;
+  font-size: 30rpx;
 }
 
 .detailCommond {
   display: flex;
-  width: 100%;
+  width: 80%;
   align-items: center;
-}
-
-.detailCommond view {
-  width: 50%;
-  text-align: center;
-  padding: 15rpx 0;
+  justify-content: space-around;
+  font-size: 28rpx;
+  font-weight: 500;
+  padding: 20rpx 20rpx;
+  margin: auto;
+  color: #212121;
 }
 
 .selected {
-  border-bottom: solid 2px red;
+  border-bottom: solid 3rpx #ff4200;
+  padding-bottom: 5rpx;
 }
 
 .show {
@@ -85,22 +158,67 @@
   display: none;
 }
 
-.productDetail .buy {
-  width: 100%;
-  display: flex;
+/* 底部 */
+
+.cusSerCollectBuy {
   position: fixed;
   bottom: 0;
+  width: 100%;
+  display: flex;
+  color: #adadad;
+  font-size: 26rpx;
+  border-top: solid 1rpx #f3f3f3;
 }
 
-.productDetail .buy button {
-  width: 50%;
-  outline: none;
-  -webkit-appearance: none;
-  border-radius: 0;
-  /* cursor: pointer */
+.cusSerCollectBuy .itemImg {
+  width: 40rpx;
+  height: 40rpx;
 }
+
+.cusSerCollectBuy .ccbItemBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 25rpx;
+}
+
+.cusSerCollectBuy .ccbItemBox .shopNum {
+  position: absolute;
+  top: 0rpx;
+  right: 446rpx;
+  color: red;
+  font-size: 22rpx;
+}
+
+.cusSerCollectBuy .addToShopcart {
+  background-color: #ff7404;
+  color: white;
+  margin-top: 12rpx;
+  margin-left: 15rpx;
+  border-radius: 40rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  width: 185rpx;
+  text-align: center;
+  margin-right: 10rpx;
+}
+
+.cusSerCollectBuy .buyNow {
+  background-color: #ff4200;
+  color: white;
+  margin-top: 12rpx;
+  margin-left: 15rpx;
+  border-radius: 40rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  width: 185rpx;
+  text-align: center;
+}
+
 /* 规格弹窗蒙层 */
-.propsPopup{
+
+.propsPopup {
   position: fixed;
   top: 0;
   left: 0;
@@ -108,7 +226,8 @@
   height: 100%;
   z-index: 4;
 }
-.propsMask{
+
+.propsMask {
   position: fixed;
   top: 0;
   left: 0;
@@ -117,16 +236,19 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 5;
 }
-.propsContent{
+
+.propsContent {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   background: white;
   z-index: 6;
+  border-top-left-radius: 25rpx;
+  border-top-right-radius: 25rpx;
 }
 
-.addShopCar{
+.addShopCar {
   width: 100%;
   height: 89rpx;
   text-align: center;
@@ -135,8 +257,10 @@
   color: #fff;
   background-color: #e64340;
 }
+
 /* 规格 数量加减 */
-.buy-num-box {
+
+.numAddCut {
   display: flex;
   justify-content: space-between;
   padding: 30rpx 30rpx 48rpx 0;
@@ -146,17 +270,17 @@
   align-items: center;
 }
 
-.num-label {
+.buyNum {
   font-size: 26rpx;
   color: #000;
 }
 
-.buy-num-box .num-box {
+.numAddCut .numBox {
   display: flex;
 }
 
-.buy-num-box .num-box .num-jian, .buy-num-box .num-box .num-input,
-.buy-num-box .num-box .num-jia {
+.numAddCut .numBox .numCut, .numAddCut .numBox .numInp,
+.numAddCut .numBox .numAdd {
   width: 80rpx;
   height: 64rpx;
   line-height: 62rpx;
@@ -164,11 +288,11 @@
   border: 1px solid #eee;
 }
 
-.buy-num-box .num-box .num-input {
+.numAddCut .numBox .numInp {
   font-size: 28rpx;
 }
 
-.buy-num-box .num-box .num-input input {
+.numAddCut .numBox .numInp input {
   height: 100%;
 }
 
@@ -182,11 +306,12 @@
   background-color: #e64340;
 }
 
-.buy-num-box .num-box .noLongerCut {
+.numAddCut .numBox .noLongerCutorAdd {
   background-color: #f5f5f9;
 }
 
 /* 规格 商品信息 */
+
 .pop-goods-info {
   display: flex;
   flex-direction: row;
@@ -231,5 +356,97 @@
   background-size: 36rpx auto;
   align-self: flex-start;
   margin-top: -10rpx;
-  
+}
+
+.optionBox .optionItem {
+  font-size: 26rpx;
+  color: #000;
+  padding-left: 30rpx;
+  padding: 30rpx 0 20rpx 30rpx;
+}
+
+.optionBox .optionChildBox {
+  display: flex;
+  margin-left: 30rpx;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.optionBox .optionChildBox .optionChild {
+  font-size: 26rpx;
+  color: #000;
+  padding: 14rpx 0rpx;
+  margin: 0 20rpx 20rpx 0;
+  border: none;
+}
+
+/* 分享 */
+
+.shareContent {
+  height: 440rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 20;
+  width: 100%;
+}
+
+.shareContent .shareItem {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 65rpx;
+}
+
+.shareContent .shareItem .weChatFriend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  color: #212121;
+}
+
+.shareContent .shareItem .weChatFriend .shareBtn {
+  padding: 0;
+  margin: 0;
+  height: 175rpx;
+  background: white;
+}
+
+.shareContent .shareItem .weChatFriend .shareBtn::after {
+  border: none;
+  outline: none;
+}
+
+.shareContent .shareItem .weChatFriend .img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 25rpx;
+}
+
+.shareContent .shareItem .erweima {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  color: #212121;
+}
+
+.shareContent .shareItem .erweima .img {
+  width: 150rpx;
+  margin-bottom: 25rpx;
+  height: 150rpx;
+}
+
+.shareContent .cancelBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.shareContent .cancelBox .cancel {
+  width: 100%;
+  background: #ff4200;
+  border-radius: 15rpx;
+  text-align: center;
+  color: white;
 }
