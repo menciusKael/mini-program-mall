@@ -1,0 +1,43 @@
+<view class='adrssManageBox'>
+  <!-- 地址列表 -->
+  <block wx:for="{{allAdressData}}" wx:key="">
+
+    <view class='adrssManage'>
+
+      <view class='nameAndPhone'>
+        <view>收货人: {{item.name}}</view>
+        <view>收货电话: {{item.tel}}</view>
+      </view>
+
+      <view class='adress'>收货地址: {{item.address}}</view>
+
+      <view class='editAndDelete'>
+        <!-- 默认地址 -->
+        <view class='{{item.checked == 1 ? "default" : ""}}' bindtap='chooseDefault' data-id='{{item.customer_address_id}}' data-index="{{index}}">
+          <radio color='#ff4200' checked='{{item.checked == 1}}'>默认地址</radio>
+        </view>
+        <!-- 编辑 删除 -->
+        <view class='editDeleteBox'>
+
+          <view class='edit' bindtap='editAddress' data-id='{{item.customer_address_id}}' data-address='{{item.address}}' data-name='{{item.name}}' data-tel="{{item.tel}}" data-postcode='{{item.postcode}}' data-checked="{{item.checked}}" data-location="{{item.location}}">
+            <image class='img' src='/images/icon/edit.png'></image>编辑
+          </view>
+
+          <view class='delete' bindtap='deleteAddress' data-id='{{item.customer_address_id}}' data-index='{{index}}'>
+            <image class='img' src='/images/icon/delete.png'></image>删除
+          </view>
+
+        </view>
+
+      </view>
+
+    </view>
+  </block>
+
+
+  <!-- 添加 -->
+  <view class='addNewAdress' bindtap='addOrEditAddress'>
+    <view class='btn'>添加新地址</view>
+  </view>
+
+</view>

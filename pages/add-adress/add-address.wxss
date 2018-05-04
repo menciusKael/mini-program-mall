@@ -1,0 +1,100 @@
+page {
+  height: 100%;
+}
+
+.container {
+  background-color: #f5f5f9;
+  justify-content: initial;
+}
+
+.formBox {
+  width: 100%;
+  background-color: #fff;
+}
+
+.listItem {
+  width: 720rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  font-size: 28rpx;
+}
+
+.listItem .label {
+  width: 160rpx;
+  color: #000;
+}
+
+.listItem .labelInp {
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.listItem .labelInp .input {
+  height: 100%;
+  font-size: 28rpx;
+  padding-right: 30rpx;
+}
+
+.listItem .right-box {
+  margin-right: 30rpx;
+}
+
+.arrow-right {
+  width: 15rpx;
+  height: 24rpx;
+}
+
+.saveBtn, .canceBtn {
+  width: 690rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  border-radius: 6rpx;
+  box-sizing: border-box;
+}
+
+.saveBtn {
+  background-color: #ff4200;
+  color: #fff;
+}
+
+.addrDetails {
+  height: auto;
+  padding: 30rpx 0;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  font-size: 28rpx;
+}
+
+.addrDetails .label {
+  margin: auto 0 auto 0;
+  width: 160rpx;
+  color: #000;
+}
+
+.addrDetails .tr {
+  box-sizing: border-box;
+  width: 480rpx;
+  overflow: scroll;
+}
+
+.listItem .picker {
+  color: #808080;
+}
+
+.listItem .pickerSelected {
+   color: #000000; 
+}
+
+.container .btnBox {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 30rpx;
+  margin-left: 30rpx;
+}

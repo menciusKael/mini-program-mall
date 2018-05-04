@@ -1,0 +1,98 @@
+<view class="container">
+
+  <form bindsubmit="onbindSave" data-id='{{needEditInfo.id}}' data-checked='{{needEditInfo.checked}}'>
+
+    <!--1. 添加表单 -->
+    <view class="formBox" wx:if='{{addOrEdit == 0}}'>
+      <!-- 姓名 -->
+      <view class="listItem">
+        <view class="label">姓名</view>
+        <view class="labelInp">
+          <input name="name" maxlength="10" class="input" type="text" placeholder="姓名" value="" />
+        </view>
+      </view>
+      <!-- 电话 -->
+      <view class="listItem">
+        <view class="label">电话</view>
+        <view class="labelInp">
+          <input name="tel" class="input" maxlength="11" type="number" placeholder="11位手机号码" value="" />
+        </view>
+      </view>
+      <!-- 地区 -->
+      <view class="listItem">
+        <view class="label">地区</view>
+        <picker name="location" mode="region" bindchange="bindRegionChange" value='{{region}}'>
+          <view class="{{pickerSelected? 'pickerSelected':'picker'}}">
+            {{region[0]}} {{region[1]}} {{region[2]}}
+          </view>
+        </picker>
+
+      </view>
+      <!-- 详细地址 -->
+      <view class="addrDetails">
+        <view class="label">地址</view>
+        <view class="labelInp">
+          <textarea class='tr' name="address" auto-height placeholder="街道门牌信息" value="" />
+        </view>
+      </view>
+      <!-- 邮编 -->
+      <view class="listItem">
+        <view class="label">邮编</view>
+        <view class="labelInp">
+          <input name="postcode" maxlength="6" class="input" type="text" placeholder='6位邮政编码' value="" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 2. 编辑表单 -->
+    <view class="formBox" wx:if="{{addOrEdit == 1}}">
+      <!-- 姓名 -->
+      <view class="listItem">
+        <view class="label">姓名</view>
+        <view class="labelInp">
+          <input name="name" maxlength="10" class="input" type="text" placeholder="姓名" value="{{needEditInfo.name}}" />
+        </view>
+      </view>
+      <!-- 电话 -->
+      <view class="listItem">
+        <view class="label">电话</view>
+        <view class="labelInp">
+          <input name="tel" class="input" maxlength="11" type="number" placeholder="11位手机号码" value="{{needEditInfo.tel}}" />
+        </view>
+      </view>
+      <!-- 地区 -->
+      <view class="listItem">
+        <view class="label">地区</view>
+        <picker name="location" mode="region" bindchange="bindRegionChange" value='{{region}}'>
+          <view>
+            {{region[0]}} {{region[1]}} {{region[2]}}
+          </view>
+        </picker>
+
+      </view>
+      <!-- 详细地址 -->
+      <view class="addrDetails">
+        <view class="label">地址</view>
+        <view class="labelInp">
+          <textarea class='tr' name="address" auto-height placeholder="街道门牌信息" value="{{needEditInfo.address}}" />
+        </view>
+      </view>
+      <!-- 邮编 -->
+      <view class="listItem">
+        <view class="label">邮编</view>
+        <view class="labelInp">
+          <input name="postcode" maxlength="6" class="input" type="text" placeholder='6位邮政编码' value="{{needEditInfo.postcode}}" />
+        </view>
+      </view>
+    </view>
+
+
+    <!-- 保存与取消 -->
+    <view class='btnBox'>
+      <button class="saveBtn" formType="submit">保存</button>
+      <button class="canceBtn" type="default" bindtap="onBindCancel">取消</button>
+    </view>
+
+  </form>
+
+</view>

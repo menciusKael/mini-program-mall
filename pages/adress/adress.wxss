@@ -1,0 +1,87 @@
+page {
+  background: #f4f4f4;
+}
+
+.adrssManageBox .adrssManage {
+  padding-top: 30rpx;
+  background: #fff;
+  font-size: 28rpx;
+  margin-bottom: 15rpx;
+}
+
+.adrssManageBox .adrssManage .nameAndPhone {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: auto;
+  color: #212121;
+}
+
+.adrssManageBox .adrssManage .adress {
+  width: 100%;
+  padding-top: 15rpx;
+  padding-left: 18rpx;
+  margin: auto;
+  border-bottom: solid 2rpx #f8f8f8;
+  font-size: 28rpx;
+  color: #212121;
+  padding-bottom: 22rpx;
+}
+
+.adrssManageBox .adrssManage .editAndDelete {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: auto;
+  padding: 28rpx 0;
+}
+
+.adrssManageBox .adrssManage .editAndDelete .editDeleteBox {
+  display: flex;
+  width: 240rpx;
+  justify-content: space-between;
+  color: #949494;
+  align-items: center;
+}
+
+.adrssManageBox .adrssManage .editAndDelete .editDeleteBox .edit .img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 5rpx;
+}
+
+.adrssManageBox .adrssManage .editAndDelete .editDeleteBox  .delete .img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 5rpx;
+}
+
+.adrssManageBox .addNewAdress {
+  position: fixed;
+  bottom: 34rpx;
+  height: 70rpx;
+  width: 86%;
+  margin-left: 52rpx;
+  opacity: 0.9;
+}
+
+.adrssManageBox .addNewAdress .btn {
+  width: 100%;
+  height: 100%;
+  background: #ff4200;
+  color: white;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  opacity: 0.9;
+}
+
+radio .wx-radio-input {
+  border-radius: 50%;
+  width: 35rpx;
+  height: 35rpx;
+}
+/* 默认选中 */
+.default{
+  color: #ff4200;
+}
