@@ -1,0 +1,80 @@
+page {
+  background: #f4f4f4;
+}
+
+.couponBox .couponStateBox {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 25rpx;
+}
+
+.curCouponState {
+  border-bottom: solid 2rpx #ff4200;
+  padding-bottom: 16rpx;
+  color: #ff4200;
+}
+
+.couponBox .myCoupon {
+  margin: auto;
+   height: 220rpx; 
+ 
+  background: white;
+   margin-top: 20rpx; 
+  color: #949494;
+   padding: 20rpx 20rpx; 
+  width: 90%;
+}
+
+.couponBox .myCoupon .couponTypeUseNow {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1rpx #e8e8e8;
+  align-items: center;
+  margin: auto;
+  padding-bottom: 15rpx;
+  position: relative;
+}
+
+.couponBox .myCoupon .couponTypeUseNow .couponTypeBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.couponBox .myCoupon .couponTypeUseNow .couponTypeBox .couponType {
+  color: #212121;
+}
+
+.couponBox .myCoupon .couponTypeUseNow .couponTypeBox .couponTypeNum {
+  color: #ff4200;
+  font-size: 50rpx;
+  font-weight: 600;
+}
+
+.couponBox .myCoupon .couponTypeUseNow .useNow {
+  width: 185rpx;
+  height: 65rpx;
+  line-height: 65rpx;
+  background: #ff4200;
+  color: white;
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.couponBox .myCoupon .couponTypeUseNow .pastTime {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 160rpx;
+  background: #f57448;
+  position: absolute;
+  top: 10rpx;
+  right: -4rpx;
+  color: white;
+  font-size: 36rpx;
+   
+}
+
+.couponBox .myCoupon .couponTypeUseNow .pastTime .pastTimeWord {
+   transform:rotate(30deg);  
+}
