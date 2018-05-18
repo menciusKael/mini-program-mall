@@ -1,0 +1,12 @@
+<block wx:for="{{collectProData}}" wx:key="">
+  <view class='favoriteBox'>
+    <image class='proImag' src='{{item.picture}}'></image>
+    <view class='nameAndPrice'>
+      <text class='name'>{{item.name}}</text>
+      <view class='priceBox'>
+        <text class='newPrice'>{{item.price}}</text>
+        <text class='oldPrice'>{{item.virtual_price}}</text>
+      </view>
+    </view>
+  </view>
+</block>

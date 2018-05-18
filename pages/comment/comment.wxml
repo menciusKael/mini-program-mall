@@ -1,0 +1,15 @@
+<view>
+  <block wx:for="{{commentProData}}" wx:key="">
+    <view class='productInfoBox'>
+      <image class='pimg' src='{{item.picture}}'></image>
+      <view class='productInfo'>
+        <text>{{item.name}}</text>
+        <text class='label'>规格: {{item.option}}</text>
+        <text class='price'>￥ {{item.price}}</text>
+      </view>
+      <view class='buyNum'>x{{item.amount}}</view>
+      <view class='returning' data-id="{{item.order_id}}" data-proid="{{item.order_product_id}}" wx:if="{{item.comment_status == 0}}" data-index="{{index}}" bindtap='toCommentConfirm'>去评价</view>
+      <view class='returning' wx:if="{{item.comment_status == 1}}">已评价</view>
+    </view>
+  </block>
+</view>

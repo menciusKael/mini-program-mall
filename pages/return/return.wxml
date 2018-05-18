@@ -1,0 +1,21 @@
+<view>
+
+  <block wx:for="{{returnProData}}" wx:key="">
+    <view class='productInfoBox'>
+      <image class='pimg' src='{{item.picture}}'></image>
+      <view class='productInfo'>
+        <text>{{item.name}}</text>
+        <text class='label'>规格: {{item.option}}</text>
+        <text class='price'>￥{{item.price}}</text>
+      </view>
+      <view class='buyNum'>x{{item.amount}}</view>
+
+      <view wx:if="{{item.return_status == 0}}" class='return' bindtap='toReturnConfirm' data-id="{{item.order_product_id}}" data-pic="{{item.picture}}" data-name="{{item.name}}" data-option="{{item.option}}" data-price="{{item.price}}" data-amount="{{item.amount}}">退换</view>
+      <view wx:if="{{item.return_status == 1}}" class='returning'>退款审核中</view>
+      <view wx:if="{{item.return_status == 2}}" class='returning'>退款中</view>
+      <view wx:if="{{item.return_status == 3}}" class='returning'>已退款</view>
+      
+    </view>
+  </block>
+
+</view>

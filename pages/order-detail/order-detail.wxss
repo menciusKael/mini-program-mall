@@ -1,0 +1,85 @@
+.orderInfoBox {
+  width: 95%;
+  margin: auto;
+  position: relative;
+  margin-top: 25rpx;
+}
+
+.orderInfoBox .state {
+  position: absolute;
+  top: 15rpx;
+  right: 0rpx;
+  color: #ff784e;
+}
+
+.productInfoBox {
+  display: flex;
+  width: 95%;
+  margin: auto;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.productInfoBox .pimg {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.productInfoBox .productInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 15rpx;
+}
+
+.productInfoBox .productInfo .label {
+  color: #afafaf;
+}
+
+.productInfoBox .productInfo .price {
+  color: #ff784e;
+}
+
+.productInfoBox .buyNum {
+  position: absolute;
+  bottom: 0rpx;
+  right: 0rpx;
+}
+
+.yunfeiCouponShifu {
+  width: 100%;
+  border-top: solid 3rpx #f4f4f4;
+  border-bottom: solid 3rpx #f4f4f4;
+  margin-top: 15rpx;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  line-height: 60rpx;
+}
+
+.yunfeiCouponShifu .itemBox {
+  display: flex;
+  justify-content: space-between;
+}
+.yunfeiCouponShifu .itemBox .pri{
+  color: #ff784e;
+}
+.yunfeiCouponShifu .itemBox .djj{
+  color: #afafaf;
+}
+
+.adreddInfoBox{
+  width: 95%;
+  margin: auto;
+  margin-top: 15rpx;
+  line-height: 45rpx;
+  color: #afafaf;
+}
+
+.adreddInfoBox .title{
+  color: black;
+}
+
+.adreddInfoBox .namePhone{
+  display: flex;
+  justify-content: space-between;
+}

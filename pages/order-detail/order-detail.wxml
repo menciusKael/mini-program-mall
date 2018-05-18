@@ -1,0 +1,53 @@
+<view>
+  <view class='orderInfoBox'>
+    <view class='orderTimeNum'>
+      <view>{{orderDetailData.create_date}}</view>
+      <view>订单号: {{orderDetailData.order_code}}</view>
+    </view>
+    <view class='state'>{{orderDetailData.status}}</view>
+  </view>
+
+  <block wx:for="{{orderDetailData.products}}">
+    <view class='productInfoBox'>
+      <image class='pimg' src='{{item.picture}}'></image>
+      <view class='productInfo'>
+        <text>{{item.name}}</text>
+        <text class='label'>规格: {{item.option}}</text>
+        <text class='price'>￥{{item.price}}</text>
+      </view>
+      <view class='buyNum'>x{{item.amount}}</view>
+    </view>
+  </block>
+
+
+  <view class='yunfeiCouponShifu'>
+    <view class='itemBox'>
+      <text>运费:</text>
+      <text class='pri' wx:if="{{orderDetailData.freight}}">￥ {{orderDetailData.freight}}</text>
+      <text class='pri' wx:if="{{!orderDetailData.freight}}">包邮</text>
+    </view>
+
+    <view class='itemBox' wx:if="{{orderDetailData.discount_type}}">
+      <view>优惠:
+        <text class='djj'>{{orderDetailData.discount_type}}</text>
+      </view>
+      <text class='pri'>-￥{{orderDetailData.discount}}</text>
+    </view>
+
+    <view class='itemBox'>
+      <text>实付金额:</text>
+      <text class='pri'>￥{{orderDetailData.income}}</text>
+    </view>
+
+  </view>
+
+  <view class='adreddInfoBox'>
+    <view class='title'>收货信息</view>
+    <view class='namePhone'>
+      <text>收货人:{{orderDetailData.name}}</text>
+      <text>收货电话: {{orderDetailData.tel}}</text>
+    </view>
+    <view>收货地址: {{orderDetailData.address}}</view>
+  </view>
+
+</view>

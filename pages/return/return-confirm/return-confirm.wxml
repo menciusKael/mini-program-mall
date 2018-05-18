@@ -1,0 +1,119 @@
+<view>
+  <!-- 商品信息 -->
+  <view class='productInfoBox'>
+    <image class='pimg' src='{{returnProInfo.pic}}'></image>
+    <view class='productInfo'>
+      <text>{{returnProInfo.name}}</text>
+      <text class='label'>规格: {{returnProInfo.option}}</text>
+      <text class='price'>￥{{returnProInfo.price}}</text>
+    </view>
+    <view class='buyNum'>x{{returnProInfo.amount}}</view>
+  </view>
+
+  <!-- 退款信息 -->
+  <form bindsubmit='onBindReturnSubmit'>
+
+    <view class='returnDetailBox'>
+
+      <view class='returnReson'>
+        <text>退款原因</text>
+        <text wx:if="{{!returnReason}}" class='pleaseChoose' bindtap='onChooseReason'>请选择></text>
+        <text wx:else class='pleaseChooseEd' bindtap='onChooseReason'>{{returnReason}}</text>
+      </view>
+
+      <view class='returnMoney'>退款金额:
+        <text class='money'>￥{{returnProInfo.price}}</text>
+      </view>
+
+      <view class='userKeyIn'>
+        <text class='tip'>退款说明:</text>
+        <textarea class='tar' name="txtar1" placeholder='选填' maxlength='-1' adjust-position auto-height></textarea>
+      </view>
+
+      <view class='userKeyIn'>
+        <text class='tip'>退货信息:</text>
+        <textarea class='tar' name="txtar2" placeholder='请填写退货物流信息' adjust-position auto-height></textarea>
+      </view>
+
+    </view>
+
+    <!-- 退款原因选择 -->
+    <view class='chooseReasonPage' wx:if="{{reasonChooseShow}}">
+      <view class='mask'></view>
+      <view class='rettrnRes'>
+
+        <view class='title'>退款原因</view>
+
+        <radio-group class='radGro' bindchange="radioChange">
+
+          <view class='radItem'>
+            <label class='label'>多拍/排错/不想要
+              <radio color='#FF4102' class='rad' value='多拍/排错/不想要'></radio>
+            </label>
+          </view>
+
+          <view class='radItem'>
+            <label class='label'>商品成分描述不符
+              <radio color='#FF4102' class='rad' value='商品成分描述不符'></radio>
+            </label>
+          </view>
+
+          <view class='radItem'>
+            <label class='label'>功能未达到标准效果
+              <radio color='#FF4102' class='rad' value='功能未达到标准效果'></radio>
+            </label>
+          </view>
+
+          <view class='radItem'>
+            <label class='label'>商品少件/破坏/污渍等
+              <radio color='#FF4102' class='rad' value='商品少件/破坏/污渍等'></radio>
+            </label>
+          </view>
+          <view class='radItem'>
+            <label class='label'>性能故障/功能缺失
+              <radio color='#FF4102' class='rad' value='性能故障/功能缺失'></radio>
+            </label>
+          </view>
+          <view class='radItem'>
+            <label class='label'>功能未达到标准效果
+              <radio color='#FF4102' class='rad' value='功能未达到标准效果'></radio>
+            </label>
+          </view>
+          <view class='radItem'>
+            <label class='label'>外观/型号/参数等与描述不符
+              <radio color='#FF4102' class='rad' value='外观/型号/参数等与描述不符'></radio>
+            </label>
+          </view>
+          <view class='radItem'>
+            <label class='label'>服务承诺
+              <radio color='#FF4102' class='rad' value='服务承诺'></radio>
+            </label>
+          </view>
+          <view class='radItem'>
+            <label class='label'>卖家发错货
+              <radio color='#FF4102' class='rad' value='卖家发错货'></radio>
+            </label>
+          </view>
+          <view class='radItem'>
+            <label class='label'>假冒品牌
+              <radio color='#FF4102' class='rad' value='假冒品牌'></radio>
+            </label>
+          </view>
+          <view class='radItem'>
+            <label class='label'>其他
+              <radio color='#FF4102' class='rad' value='其他'></radio>
+            </label>
+          </view>
+        </radio-group>
+
+        <button class='confirmBtn' bindtap='onBindReasonConfirm'>确定</button>
+
+      </view>
+    </view>
+
+    <button class='confirmBtnTJ' form-type='submit'>提交</button>
+
+  </form>
+
+
+</view>

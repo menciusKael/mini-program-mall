@@ -1,0 +1,115 @@
+<view class='container'>
+  <!-- 顶部状态 -->
+  <view class='statusBox'>
+    <block wx:for="{{stateItem}}" wx:key="">
+      <view class='stateItem {{index == currentState? "stateActive" : "" }}' bindtap='onStateTap' data-index="{{index}}">{{item}}
+      </view>
+    </block>
+  </view>
+
+  <!-- 商品 -->
+  <block wx:for="{{orderListData}}" wx:key="">
+
+    <view class='allOrderBox'>
+
+      <view class='topInfoBox'>
+        <view class='timeAndOrderNum'>
+          <text class='time'>时间: {{item.create_date}}</text>
+          <text class='orderNum'>订单号: {{item.order_code}}</text>
+        </view>
+        <!-- 状态 -->
+        <view wx:if="{{currentState == 0}}" class='state'>
+          <text wx:if="{{item.status == 1}}">待付款</text>
+          <text wx:elif="{{item.status == 2}}">待发货</text>
+          <text wx:elif="{{item.status == 3}}">待收货</text>
+          <text wx:elif="{{item.status == 4}}">已完成</text>
+        </view>
+        <view wx:elif="{{currentState == 1}}" class='state'>待付款</view>
+        <view wx:elif="{{currentState == 2}}" class='state'>待发货</view>
+        <view wx:elif="{{currentState == 3}}" class='state'>待收货</view>
+        <view wx:else class='state'>已完成</view>
+      </view>
+
+      <block wx:for="{{item.products}}" wx:for-item="proItem">
+        <view class='proInfoBox'>
+          <image class='proImg' src='{{proItem.picture}}'></image>
+          <view class='proInfo'>
+            <view class='name'>{{proItem.name}}</view>
+            <view class='size'>{{proItem.option}}</view>
+            <view class='price'>{{proItem.price}}</view>
+          </view>
+          <view class='shopNum'>x{{proItem.amount}}</view>
+        </view>
+      </block>
+
+
+      <view class='priceAndOrderActionBox'>
+
+        <view class='priceAndOrderAction'>
+
+          <view class='payMoney'>实付金额:
+            <text class='money'>{{item.income}}</text>
+          </view>
+
+          <!-- 操作 -->
+          <!-- 全部 -->
+          <view class='orderActions' wx:if="{{currentState == 0 && item.status == 1}}">
+            <view class='orderAction' bindtap='onDeleteOrder' data-id='{{item.order_id}}' data-index="{{index}}">删除订单</view>
+            <view class='orderAction' bindtap='onOrderDetail' data-id='{{item.order_id}}'>订单详情</view>
+            <view class='payMoneys'>付款</view>
+          </view>
+          <view class='orderActions' wx:if="{{currentState == 0 && item.status == 2}}">
+            <view class='orderAction' bindtap='onOrderDetail' data-id='{{item.order_id}}'>订单详情</view>
+            <view class='orderAction' bindtap='onApplyReturn' data-id='{{item.order_id}}'>申请退款</view>
+          </view>
+          <view class='orderActions' wx:if="{{currentState == 0 && item.status == 3}}">
+            <navigator url='/pages/logistics/logistics'>
+              <view class='orderAction'>查看物流</view>
+            </navigator>
+            <view class='orderAction' bindtap='onOrderDetail' data-id='{{item.order_id}}'>订单详情</view>
+            <view class='orderAction' bindtap='onApplyReturn' data-id='{{item.order_id}}'>申请退款</view>
+          </view>
+          <view class='orderActions' wx:if="{{currentState == 0 && item.status == 4}}">
+            <view class='orderAction' bindtap='onDeleteOrder' data-id='{{item.order_id}}' data-index="{{index}}">删除订单</view>
+            <view class='orderAction' bindtap='onOrderDetail' data-id='{{item.order_id}}'>订单详情</view>
+            <view class='evaluate' bindtap='onComment' wx:if="{{!item.comment_status}}" data-pronum="{{item.products.length}}" data-id="{{item.order_id}}">去评价</view>
+            <view class='evaluate' wx:else>已评价</view>
+          </view>
+
+          <!-- 待付款 -->
+          <view class='orderActions' wx:elif="{{currentState == 1}}">
+            <view class='orderAction' bindtap='onDeleteOrder' data-id='{{item.order_id}}' data-index="{{index}}">删除订单</view>
+            <view class='orderAction' bindtap='onOrderDetail' data-id='{{item.order_id}}'>订单详情</view>
+            <view class='payMoneys'>付款</view>
+          </view>
+
+          <!-- '待发货 -->
+          <view class='orderActions' wx:elif="{{currentState == 2}}">
+            <view class='orderAction' bindtap='onOrderDetail' data-id='{{item.order_id}}'>订单详情</view>
+            <view class='orderAction' bindtap='onApplyReturn' data-id='{{item.order_id}}'>申请退款</view>
+          </view>
+
+          <!-- '待收货', -->
+          <view class='orderActions' wx:elif="{{currentState == 3}}">
+            <navigator url='/pages/logistics/logistics'>
+              <view class='orderAction'>查看物流</view>
+            </navigator>
+            <view class='orderAction' bindtap='onOrderDetail' data-id='{{item.order_id}}'>订单详情</view>
+            <view class='orderAction' bindtap='onApplyReturn' data-id='{{item.order_id}}'>申请退款</view>
+          </view>
+
+          <!-- '待评价' -->
+          <view class='orderActions' wx:if="{{currentState == 4}}">
+            <view class='orderAction' bindtap='onDeleteOrder' data-id='{{item.order_id}}' data-index="{{index}}">删除订单</view>
+            <view class='orderAction' bindtap='onOrderDetail' data-id='{{item.order_id}}'>订单详情</view>
+            <view class='evaluate' bindtap='onComment' data-id="{{item.order_id}}" wx:if="{{!item.comment_status}}" data-pronum="{{item.products.length}}">去评价</view>
+            <view class='evaluate' wx:else>已评价</view>
+          </view>
+
+        </view>
+
+      </view>
+    </view>
+  </block>
+
+</view>
