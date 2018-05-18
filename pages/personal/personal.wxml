@@ -1,16 +1,167 @@
-<!--pages/personal/personal.wxml-->
-<view>
-  <view class='userInfo'>
-    <image src='/images/icon/personel.png'></image>
-    <text>请点击登录</text>
+ <view class='personalCenter'>
+  <!-- 用户信息 -->
+  <view class='userInfoBox'>
+    <image class='bkg1' src='/images/icon/bkg1.png'></image>
+    <view class='userInfo'>
+
+      <view class='withoutLogin' wx:if="{{!hasLogin}}"></view>
+      <button class='loginBtn' wx:if="{{!hasLogin}}" open-type="getUserInfo" bindgetuserinfo='onBindgetuserinfo'>点击登录</button>
+
+      <image class='avatar' src='{{avatar}}' wx:if="{{hasLogin}}"></image>
+      <text class='vip' wx:if="{{hasLogin}}">VIP</text>
+      <text class='nickName' wx:if="{{hasLogin}}">{{name}}</text>
+
+    </view>
   </view>
 
-  <userCenterList list-src="/images/icon/myOrder.png" list="订单" />
-  <userCenterList list-src="/images/icon/getAdress.png" list="收货地址" />
-  <userCenterList list-src="/images/icon/beforepay.png" list="待付款" />
-  <userCenterList list-src="/images/icon/payed.png" list="已付款" />
-  <userCenterList list-src="/images/icon/Coupon.png" list="优惠卷" />
-  <userCenterList list-src="/images/icon/tools.png" list="系统通知" />
-  <userCenterList list-src="/images/icon/integral.png" list="积分" />
+  <!-- 储值卡 -->
+  <view class='storageCard'>
+    <view class='balanceBox'>
+      <text>储值卡余额(元)</text>
+      <navigator url='/pages/recharge/recharge'>
+        <view class='balance'>
+          <text wx:if="{{deposit > 0}}" class='num'>{{deposit}}</text>
+          <text wx:else class='num'> 0 </text>
+          <image class='toRecharge' src='/images/icon/toAdress.png'></image>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- 我的订单 -->
+  <view class='myOrderBox'>
+    <view class='myOrder'>
+      <view class='myOrderLo'>
+        <image class='logo' src='/images/icon/myorder.png'></image>
+        <text class='mo'>我的订单</text>
+      </view>
+      <navigator url='/pages/order-list/order-list?state=0'>
+        <view class='lookMore'>
+          <text class='look'>查看全部订单</text>
+          <image class='more' src='/images/icon/toAdress.png'></image>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+
+  <!-- 订单状态 -->
+
+  <view class='orderState'>
+
+    <navigator url='/pages/order-list/order-list?state=1'>
+      <view class='stateItemBox'>
+        <view class='stateNum' wx:if="{{count[0] > 0}}">{{count[0]}}</view>
+        <image class='img' src='/images/icon/waitPay.png'></image>
+        <text class='txt'>待付款</text>
+      </view>
+    </navigator>
+
+    <navigator url='/pages/order-list/order-list?state=2'>
+      <view class='stateItemBox'>
+        <view class='stateNum' wx:if="{{count[1] > 0}}">{{count[1]}}</view>
+        <image class='img' src='/images/icon/waiteSend.png'></image>
+        <text class='txt'>代发货</text>
+      </view>
+    </navigator>
+
+    <navigator url='/pages/order-list/order-list?state=3'>
+      <view class='stateItemBox'>
+        <view class='stateNum' wx:if="{{count[2] > 0}}">{{count[2]}}</view>
+        <image class='img' src='/images/icon/waitGet.png'></image>
+        <text class='txt'>待收货</text>
+      </view>
+    </navigator>
+
+    <navigator url='/pages/order-list/order-list?state=4'>
+      <view class='stateItemBox'>
+        <view class='stateNum' wx:if="{{count[3] > 0}}">{{count[3]}}</view>
+        <image class='img' src='/images/icon/pingjia.png'></image>
+        <text class='txt'>已完成</text>
+      </view>
+    </navigator>
+
+    <view class='stateItemBox'>
+      <view class='stateNum' wx:if="{{count[4] > 0}}">{{count[4]}}</view>
+      <image class='img' src='/images/icon/tuihuanhuo.png'></image>
+      <text class='txt'>退换货</text>
+    </view>
+
+  </view>
+
+  <!-- 分界线 -->
+  <view class='splitLine'></view>
+
+  <!-- items -->
+  <navigator url="/pages/vip/vip">
+    <view class='userCenterItem'>
+      <view class='imgList'>
+        <image class='img' src='/images/icon/vip.png'></image>
+        <text class='list'>我的会员</text>
+      </view>
+      <image class='arr' src='/images/icon/toAdress.png'></image>
+    </view>
+  </navigator>
+
+  <navigator url="/pages/favorite/favorite">
+    <view class='userCenterItem'>
+      <view class='imgList'>
+        <image class='img' src='/images/icon/shoucang.png'></image>
+        <text class='list'>我的收藏</text>
+      </view>
+      <image class='arr' src='/images/icon/toAdress.png'></image>
+    </view>
+  </navigator>
+
+  <navigator url="">
+    <view class='userCenterItem'>
+      <view class='imgList'>
+        <image class='img' src='/images/icon/fenxiao.png'></image>
+        <text class='list'>成为分销商</text>
+      </view>
+      <image class='arr' src='/images/icon/toAdress.png'></image>
+    </view>
+  </navigator>
+
+  <navigator url="/pages/adress/adress" hover-class="navigator-hover">
+    <view class='userCenterItem'>
+      <view class='imgList'>
+        <image class='img' src='/images/icon/address.png'></image>
+        <text class='list'>收货地址</text>
+      </view>
+      <image class='arr' src='/images/icon/toAdress.png'></image>
+    </view>
+  </navigator>
+
+  <navigator url="/pages/notice/notice">
+    <view class='userCenterItem'>
+      <view class='imgList'>
+        <image class='img' src='/images/icon/tongzhi.png'></image>
+        <text class='list'>系统通知</text>
+      </view>
+      <image class='arr' src='/images/icon/toAdress.png'></image>
+    </view>
+  </navigator>
+
+  <navigator url="/pages/coupon/coupon">
+    <view class='userCenterItem'>
+      <view class='imgList'>
+        <image class='img' src='/images/icon/kabao.png'></image>
+        <text class='list'>我的卡卷包</text>
+      </view>
+      <image class='arr' src='/images/icon/toAdress.png'></image>
+    </view>
+  </navigator>
+
+  <navigator url="/pages/integral/integral">
+    <view class='userCenterItem'>
+      <view class='imgList'>
+        <image class='img' src='/images/icon/jifen.png'></image>
+        <text class='list'>我的积分</text>
+      </view>
+      <image class='arr' src='/images/icon/toAdress.png'></image>
+    </view>
+  </navigator>
+
 
 </view>
