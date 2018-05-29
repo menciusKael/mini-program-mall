@@ -1,3 +1,5 @@
+<import src="../../../wxParse/wxParse.wxml" />
+
 <view class='productDetail'>
   <!-- 商品图片/轮播 -->
   <swiper class='swp' indicator-dots="true" circular="true" autoplay="true" interval="{{interval}}" duration="500">
@@ -61,32 +63,79 @@
 
   <!-- 商品详情、参数、评价 -->
   <view class='detailCommond'>
-    <view class='detail' data-id='1' catchtap='onchangeItem' class='{{currentSelectd==1 ? "selected" : "" }} '>商品详情</view>
+    <view class='detail' data-id='1' catchtap='onchangeItem' class='{{currentSelectd==1 ? "selected" : "" }} '>图文详情</view>
     <view class='parameter' data-id='2' catchtap='onchangeItem' class='{{currentSelectd==2 ? "selected" : "" }} '>商品参数</view>
     <view class='commond' data-id='3' catchtap='onchangeItem' class='{{currentSelectd==3 ? "selected" : "" }} '>商品评论</view>
   </view>
 
   <!-- 详情 -->
   <view class='{{currentSelectd==1 ? "show" : "hidden" }}'>
-    详情
+    <!-- <view class='imgTxtDetail'>
+      {{goodsDetail.description}}
+    </view> -->
+    <template is="wxParse" data="{{wxParseData:description.nodes}}" />
   </view>
 
   <!-- 参数 -->
   <view class='{{currentSelectd==2 ? "show" : "hidden" }}'>
-    参数
+    <!-- <view class='proPam'>
+      <view class='weight'>商品重量
+        <text class='weNum'>500g</text>
+      </view>
+      <view class='volume'>商品体积
+        <text class='voNum'>30m</text>
+      </view>
+    </view> -->
+    <view class='proPamNan'>
+      <text>暂无参数</text>
+    </view>
   </view>
 
-  <view class='{{currentSelectd==3 ? "show" : "hidden" }}'>
-    评论
+  <!-- 商品评论 -->
+  <view class='proCommoned {{currentSelectd==3 ? "show" : "hidden" }}'>
+    <!-- 全部，有图状态切换 -->
+    <view class='comType'>
+      <view bindtap='changeComType' class='all {{allComment? "commentTypeSelect" : ""}}'>全部</view>
+      <view bindtap='changeComType' class='havePic {{!allComment? "commentTypeSelect" : ""}}'>有图</view>
+    </view>
+
+    <block wx:for="{{allComment ? goodsComment.comments_all : goodsComment.comments_withpics}}" wx:key="">
+
+      <view class='commonDetailBox'>
+        <view class='userInfo'>
+          <image class='img' src='{{item.avatar}}'></image>
+          <text class='nichen'>{{item.name}}</text>
+        </view>
+
+        <view class='content'>{{item.description}}</view>
+
+        <view class='goodPics'>
+          <block wx:for="{{item.picture}}" wx:for-item='itemImg' wx:key="">
+            <image class='pig' src='{{itemImg}}'></image>
+          </block>
+        </view>
+
+        <view class='dataAndSize'>
+          <text class='data'>{{item.create_date}}</text>
+          <text class='size'>{{item.option}}</text>
+        </view>
+
+      </view>
+
+    </block>
+
+    <!-- 查看更多 -->
+    <!-- <view class='more'>查看更多</view> -->
   </view>
 
 
+  <!-- 底部tab栏 -->
   <view class='cusSerCollectBuy'>
     <!-- 客服 -->
-    <view class="ccbItemBox">
+    <button class="ccbItemButtonBox" open-type='contact'>
       <image class='itemImg' src='/images/icon/cusSer.png'></image>
-      <view class='tip'>客服</view>
-    </view>
+      <text class='kefu'>客服</text>
+    </button>
 
     <!-- 收藏 -->
     <view class='ccbItemBox'>
@@ -184,19 +233,29 @@
           </button>
           <view>分享给微信好友</view>
         </view>
-        <view class='erweima'>
+        <view class='erweima' bindtap='sharePoster'>
           <image class='img' src='/images/icon/erWeima.png'></image>
           <view>生成商品海报</view>
         </view>
       </view>
-
       <!-- 取消 -->
       <view class='cancelBox'>
         <button class='cancel' bindtap='oncCncelShare'>取消</button>
       </view>
     </view>
+  </view>
 
+  <!-- 商品海报 -->
+  <view class='posterBox' wx:if="{{posterShow}}">
 
+    <view class='mask'></view>
+    <view class='content'>
+      <view class='poster'>
+        <canvas canvas-id="shareCanvas" style="width:280px;height:390px"></canvas>
+      </view>
+      <button class="saveImg" bindtap='saveImage'>保存图片</button>
+      <view class="tiptxt">保存至相册可以分享到朋友圈</view>
+    </view>
   </view>
 
 </view>
