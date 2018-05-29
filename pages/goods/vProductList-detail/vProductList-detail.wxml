@@ -150,7 +150,7 @@
       <view class="shopNum">({{shopNum}})</view>
       <view class='tip'> 购物车 </view>
     </view>
-
+ 
     <!-- 加入购物车 -->
     <view class='addToShopcart' type='default' bindtap='toAddShopCar'>加入购物车</view>
 
