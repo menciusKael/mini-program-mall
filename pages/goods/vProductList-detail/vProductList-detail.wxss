@@ -1,3 +1,4 @@
+@import "/wxParse/wxParse.wxss";
 /* 轮播 */
 
 Page {
@@ -6,7 +7,7 @@ Page {
 
 .productDetail .swp {
   height: 500rpx;
-  background-color: #ec8c70;
+  /* background-color: #ec8c70; */
 }
 
 .productDetail .swp .img {
@@ -90,8 +91,8 @@ Page {
   width: 32rpx;
   height: 32rpx;
   position: absolute;
-  top: 21rpx;
-  right: 60rpx;
+  top: 20rpx;
+  right: 55rpx;
   z-index: 10;
 }
 
@@ -158,6 +159,148 @@ Page {
   display: none;
 }
 
+/* 商品参数 */
+
+.proPam {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15rpx;
+  font-size: 28rpx;
+  margin-top: 35rpx;
+}
+
+.proPam .weight {
+  color: #949494;
+  margin-bottom: 25rpx;
+}
+
+.proPam .weight .weNum {
+  color: #212121;
+}
+
+.proPam .volume {
+  color: #949494;
+}
+
+.proPam .volume .voNum {
+  color: #212121;
+}
+
+.proPamNan {
+  display: flex;
+  padding-left: 15rpx;
+  font-size: 28rpx;
+  margin-top: 35rpx;
+  color: #ababab;
+  justify-content: center;
+}
+
+/* 商品评论 */
+
+.proCommoned {
+  margin-bottom: 120rpx;
+}
+
+.comType {
+  display: flex;
+  justify-content: flex-start;
+  width: 95%;
+  margin-top: 5rpx;
+  margin: auto;
+  align-items: center;
+  font-size: 28rpx;
+  border-bottom: solid 4rpx #f6f6f6;
+  padding-bottom: 30rpx;
+}
+
+.comType .all {
+  width: 100rpx;
+  height: 42rpx;
+  background: #d3d3d3;
+  color: white;
+  margin-right: 20rpx;
+  text-align: center;
+  line-height: 42prx;
+  border-radius: 20rpx;
+}
+
+.comType .all.commentTypeSelect {
+  background: #ff4200;
+}
+
+.comType .havePic.commentTypeSelect {
+  background: #ff4200;
+}
+
+.comType .havePic {
+  width: 100rpx;
+  height: 42rpx;
+  background: #d3d3d3;
+  color: white;
+  margin-right: 20rpx;
+  text-align: center;
+  line-height: 42prx;
+  border-radius: 20rpx;
+}
+
+.commonDetailBox {
+  border-bottom: solid 3rpx #f6f6f6;
+  padding-top: 30rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+  font-size: 28rpx;
+  justify-content: space-between;
+}
+
+.commonDetailBox .userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.commonDetailBox .userInfo .img {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.commonDetailBox .content {
+  margin-bottom: 20rpx;
+}
+
+.commonDetailBox .dataAndSize {
+  color: #adadad;
+}
+
+.commonDetailBox .goodPics {
+  width: 100%;
+  margin: 15rpx auto;
+  display: flex;
+}
+
+.commonDetailBox .goodPics .pig {
+  width: 220rpx;
+  height: 220rpx;
+  margin-right: 10rpx;
+}
+
+.commonDetailBox .dataAndSize .data {
+  margin-right: 15rpx;
+}
+
+.proCommoned .more {
+  margin: auto;
+  font-size: 28rpx;
+  color: #bbb;
+  text-align: center;
+  margin-top: 35rpx;
+}
+
 /* 底部 */
 
 .cusSerCollectBuy {
@@ -168,6 +311,7 @@ Page {
   color: #adadad;
   font-size: 26rpx;
   border-top: solid 1rpx #f3f3f3;
+  background: white;
 }
 
 .cusSerCollectBuy .itemImg {
@@ -181,6 +325,38 @@ Page {
   align-items: center;
   justify-content: space-between;
   padding: 10rpx 25rpx;
+}
+
+.cusSerCollectBuy .ccbItemButtonBox {
+  /* display: flex; *//* flex-direction: column; *//* align-items: center; *//* justify-content: flex-end; *//* height: 100rpx; */
+  padding: 47rpx;
+  margin-left: 22rpx;
+  margin-right: -15rpx;
+  font-size: 26rpx;
+  color: #adadad;
+  outline: none;
+  border: 0;
+  -webkit-appearance: none;
+  background: white;
+  box-sizing: border-box;
+  position: relative;
+  left: 0rpx;
+}
+
+.cusSerCollectBuy .ccbItemButtonBox .itemImg {
+  position: absolute;
+  top: 7rpx;
+  left: 7rpx;
+}
+
+.cusSerCollectBuy .ccbItemButtonBox .kefu {
+  position: absolute;
+  bottom: -1rpx;
+  left: 0rpx;
+}
+
+.cusSerCollectBuy .ccbItemButtonBox::after {
+  border: none;
 }
 
 .cusSerCollectBuy .ccbItemBox .shopNum {
@@ -380,6 +556,13 @@ Page {
   border: none;
 }
 
+/* 图文详情 */
+
+.imgTxtDetail {
+  width: 95%;
+  margin: auto;
+}
+
 /* 分享 */
 
 .shareContent {
@@ -446,7 +629,57 @@ Page {
 .shareContent .cancelBox .cancel {
   width: 100%;
   background: #ff4200;
-  border-radius: 15rpx;
   text-align: center;
   color: white;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+}
+
+/* 海报 */
+
+.posterBox {
+  z-index: 30;
+  background: white;
+  border: solid 1px red;
+}
+
+.posterBox .mask {
+  z-index: 35;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.posterBox .content {
+  position: fixed;
+  top: 70rpx;
+  width: 86%;
+  margin-left: 49rpx;
+  height: auto;
+  background: white;
+  z-index: 40;
+  padding-bottom: 74rpx;
+}
+
+.posterBox .content .poster {
+  width: 280px;
+  margin: auto;
+}
+
+.posterBox .content .saveImg {
+  width: 86%;
+  margin: auto;
+  border-radius: 20px;
+  background-color: #ff4200;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.posterBox .content .tiptxt {
+  text-align: center;
+  margin-top: 18px;
 }
