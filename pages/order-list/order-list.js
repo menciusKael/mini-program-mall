@@ -1,10 +1,12 @@
+ var MD5Util = require('../../utils/MD5Encode.js');
 Page({
   data: {
     stateItem: [
       '全部', '待付款', '待发货', '待收货', '已完成'
     ],
     currentState: 0,
-    orderListData: []
+    orderListData: [],
+    // key : ''
   },
 
   onLoad: function (options) {
@@ -21,10 +23,12 @@ Page({
         method: 'POST',
         success: function (res) {
           let orderListData = res.data.data;
+          // let key = res.data.key;
           console.log(orderListData)
           that.setData({
             currentState: state,
-            orderListData
+            orderListData,
+            // key
           })
         }
       })
@@ -38,9 +42,11 @@ Page({
         method: 'POST',
         success: function (res) {
           let orderListData = res.data.data;
+          // let key = res.data.key;
           console.log(orderListData)
           that.setData({
-            orderListData
+            orderListData,
+            // key
           })
         }
       })
@@ -95,12 +101,12 @@ Page({
   // 去评论
   onComment(e) {
     let id = e.currentTarget.dataset.id;// 订单id
-    let proNum = e.currentTarget.dataset.pronum; 
-     
+    let proNum = e.currentTarget.dataset.pronum;
+
     // 单个商品直接去评价页面
     if (proNum == 1) {
       wx.navigateTo({
-        url: '/pages/comment/comment-confirm/comment-confirm?id=' + id  
+        url: '/pages/comment/comment-confirm/comment-confirm?id=' + id
       })
     } else {
       // 否则去商品选择评价页面
@@ -115,5 +121,73 @@ Page({
     wx.navigateTo({
       url: '/pages/return/return?id=' + id,
     })
+  },
+  // 支付
+  toPayNow(e) {
+    let that = this;
+    let total_fee = e.currentTarget.dataset.ic;
+    let order_code = e.currentTarget.dataset.oc;
+    let openId = wx.getStorageSync('open_id');
+
+    wx.request({
+      url: 'http://mps.essocial.com.cn/api/checkout/pay',
+      method: 'POST',
+      data: {
+        openId,
+        total_fee,
+        order_code
+      },
+      success: function (res) {
+
+        console.log(res)
+
+        let appid = wx.getStorageSync('app_id')// 
+
+        // 时间戳 timestamp
+        var date = new Date()
+        var timeStamp = date.getTime().toString().substr(0, 10)
+
+        // 随机字符串
+        let nonceArr = []
+        let rd = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        for (var i = 0; i < 32; i++) {
+          var tempIndex = Math.floor(Math.random() * 32)
+          nonceArr.push(rd[tempIndex])
+        }
+        var nonceStr = nonceArr.join('')
+
+        // 数据包 package
+        var packageA = 'prepay_id=' + prepay_id;
+        // 签名 paySign                
+        var stringA = `appId=${appid}&nonceStr=${nonceStr}&package=${packageA}&signType=MD5&timeStamp=${timeStamp}`;
+        var stringSignTemp = `${stringA}&key=${this.data.key}`;
+        var sign = MD5Util.hexMD5(stringSignTemp).toUpperCase();
+
+        // 发起微信支付
+        wx.requestPayment({
+          'timeStamp': timeStamp,
+          'nonceStr': nonceStr,
+          'package': packageA,
+          'signType': 'MD5',
+          'paySign': sign,
+          'success': function (res) {
+            console.log(res)
+            wx.showToast({
+              title: '支付成功',
+              icon: 'success'
+            })
+          },
+          'fail': function (res) {
+            console.log(res)
+          }
+        })
+
+      }
+    })
+
+
+
+
+
   }
 })
