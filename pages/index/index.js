@@ -1,101 +1,51 @@
-//获取全局应用实例
-const app = getApp()
+<view>
 
-var util = require('../../utils/util.js');
-// var mock = require('../../utils/mock.js');
+  <!-- 搜索 -->
+  <view class='module_1'>
+    <navigator url='searchResult/searchResult'>
+      <input class='vSearch-inp' type='text' placeholder='请输入搜索内容' maxlength="15"></input>
+      <icon class='vSearch-icon' type='search' size='16' color='#999'></icon>
+    </navigator>
+  </view>
 
-let mock2 = require('../../utils/mock2.js');
+  <!-- 轮播 -->
+  <swiper class="module_2" autoplay="true" interval="{{interval}}" indicator-dots="true" circular="true" catchtap='onSwiperTap'>
+    <block wx:for="{{module_2}}" wx:key="a">
+      <swiper-item>
+        <navigator url="{{item.link_value}}" hover-class="navigator-hover">
+          <image class='vSlider-image' src="{{item.picture}}" />
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
 
-// 富文本渲染
-// var WxParse = require('../../wxParse/wxParse.js');
+  <!-- 首页导航 -->
+  <view class='module_3'>
+    <block wx:for="{{module_3}}" wx:key="b">
+      <navigator url="{{item.link_value}}" hover-class="navigator-hover">
+        <view class='quickNav'>
+          <image class='img' src='{{item.picture}}'>
+          </image>
+          <view class='title'>{{item.text}}</view>
+        </view>
+      </navigator>
+    </block>
+  </view>
 
+  
+  <!-- 新闻列表 -->
+  <block wx:for="{{articleListData}}" wx:key="c">
+    <navigator url="/vNewsList-detail/vNewsList-detail?id={{item.article_id}}" hover-class="navigator-hover">
+      <view class='newsList'>
+        <view class='image'>
+          <image class='img' mode='scaleToFill' src='{{item.picture}}'></image>
+        </view>
+        <view class='content'>
+          <text class='txt1'>{{item.title}}</text>
+          <text class='txt2'>{{item.keywords}}</text>
+        </view>
+      </view>
+    </navigator>
+  </block>
 
-Page({
-
-  data: {
-    list: [],
-    // 轮播播放间隔
-    interval: 3000,
-    // 轮播本地数据
-    vSliderData: [
-      {
-        imgSrc: "/images/vSlider1.jpg",
-        imgId: 0
-      },
-      {
-        imgSrc: "/images/vSlider2.jpg",
-        imgId: 1
-      },
-      {
-        imgSrc: "/images/vSlider3.jpg",
-        imgId: 2
-      }
-    ]
-
-  },
-  onLoad(options) {
-    var that = this;
-    this.setData({
-      newsList: mock2.newsList
-    });
-
-    //调登陆接口
-    // wx.login({
-    //   success: function (res) {
-    //     if (res.code) {
-    //       //存储 code
-    //       var codeinfo = {
-    //         code: res.code,
-    //       };
-    //       wx.setStorageSync('codeinfo', codeinfo)
-    //     }
-    //   },
-    //   fail: function () {
-    //     console.log("授权失败");
-    //   },
-    //   complete: function () {
-
-    //   }
-    // })
-    wx.request({
-      url: 'http://mps.essocial.com.cn/api/article/getArticleList',
-      method: "POST",
-      data: {
-        program_id: 1,
-        article_group_id: 0
-      },
-      success: function (res) {
-        var articleListData = res.data.data;
-        // console.log(articleListData)
-        that.setData({
-          articleListData
-        });
-      }
-    })
-  },
-
-  onReady: function () {
-
-  },
-
-  onShow: function () {
-
-  },
-  // 轮播图点击跳转
-  onSwiperTap(event) {
-    let id = event.target.dataset.id;
-    wx.navigateTo({
-      url: 'vSlider-detail/vSlider-detail?id=' + id
-    })
-  },
-  // 文章点击跳转
-  toArticleDetail(event) {
-    let id = event.currentTarget.dataset.id;
-    // console.log(id)
-    wx.navigateTo({
-      url: 'vNewsList-detail/vNewsList-detail?id=' + id,
-    })
-  }
-})
-
-
+</view>
