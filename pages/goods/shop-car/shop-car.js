@@ -13,6 +13,10 @@ Page({
     var shopCarInfo = wx.getStorageSync('shopCarInfo');
     if (shopCarInfo.shopList) {
       list = shopCarInfo.shopList
+      this.setData({
+         list // 修改初始加载全选bug
+      })
+       
     }
     this.setShopCarData(this.totalPrice(), this.allSelect(), list)
   },
