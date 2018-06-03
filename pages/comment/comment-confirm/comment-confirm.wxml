@@ -10,21 +10,21 @@
     <view class='startComBox'>
 
       <view class='startCom'>
-        商品描述
+        //商品描述
         <block wx:for="{{stars}}" wx:key="">
           <image data-index='{{item}}' bindtap='onCommentStar' data-id="gd" class='img' src='{{goodDescribe >= item ? "/images/icon/star.png" : "/images/icon/nostar.png" }}'></image>
         </block>
       </view>
 
       <view class='startCom'>
-        服务态度
+        //服务态度
         <block wx:for="{{stars}}" wx:key="">
           <image data-index='{{item}}' bindtap='onCommentStar' data-id="sa" class='img' src='{{serverAttitude >= item ? "/images/icon/star.png" : "/images/icon/nostar.png" }}'></image>
         </block>
       </view>
 
       <view class='startCom'>
-        物流服务
+        //物流服务
         <block wx:for="{{stars}}" wx:key="">
           <image data-index='{{item}}' bindtap='onCommentStar' data-id="ls" class='img' src='{{logisService >= item ? "/images/icon/star.png" : "/images/icon/nostar.png" }}'></image>
         </block>
