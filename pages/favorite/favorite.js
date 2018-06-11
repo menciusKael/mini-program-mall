@@ -1,12 +1,13 @@
 Page({
   data: {
-    collectProData : []
+    collectProData: [],
+    haveCollect: false
   },
-  onLoad: function (options) {
+  onShow: function (options) {
     let that = this;
     let c_id = wx.getStorageSync('c_id');
     wx.request({
-      url: 'http://mps.essocial.com.cn/api/product_collected/getProductCollectedList',
+      url: 'https://mps.essocial.com.cn/api/product_collected/getProductCollectedList',
       data: {
         customer_id: c_id,
         program_type: 3
@@ -15,10 +16,24 @@ Page({
       success: function (res) {
         let collectProData = res.data.data;
         console.log(collectProData)
-        that.setData({
-          collectProData
-        })
+        if (collectProData !== null) {
+          that.setData({
+            collectProData,
+            haveCollect: true
+          })
+        }else{
+          that.setData({
+            haveCollect: false
+          })
+        }
+
       }
+    })
+  },
+  toProductDetail(e) {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/vProductList-detail/vProductList-detail?id=' + id,
     })
   }
 })
