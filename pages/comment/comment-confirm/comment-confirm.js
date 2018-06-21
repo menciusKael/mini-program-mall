@@ -1,3 +1,4 @@
+var app = getApp()
 Page({
   data: {
     stars: [1, 2, 3, 4, 5],
@@ -5,6 +6,7 @@ Page({
     serverAttitude: 0,
     logisService: 0,
     addImgSrc: [],
+    pictures: [],
     order_code: '',// 订单编号
     productInfo: {}, // 商品信息    
   },
@@ -12,7 +14,7 @@ Page({
     let that = this;
     let id = options.id; //订单id       
     wx.request({
-      url: 'http://mps.essocial.com.cn/api/order/getOrderDetail',
+      url: app.globalData.api + 'order/getOrderDetail',
       data: {
         order_id: id
       },
@@ -54,14 +56,73 @@ Page({
   // 添加图片
   addPic() {
     var that = this;
+    var addImgSrc = that.data.addImgSrc;
+    var pictures = that.data.pictures;
+
     wx.chooseImage({
       count: 5,
       success: function (res) {
-        that.setData({
-          addImgSrc: res.tempFilePaths
+
+        let temp = res.tempFilePaths;
+        addImgSrc = JSON.parse(JSON.stringify(temp))
+
+        // console.log(addImgSrc)
+
+        // for (var i = 0; i < addImgSrc.length; i++) {
+        //   wx.uploadFile({
+        //     url: 'https://mps.essocial.com.cn/backend/common/upload',
+        //     filePath: addImgSrc[i],
+        //     name: 'image',
+        //     success: function (res) {
+        //       var pic = res.data;
+        //       pictures.push(pic)
+
+        //     }
+        //   })
+        // }
+        const pro = addImgSrc.map((item, index) => {
+
+          return new Promise((resolve, reject) => {
+
+            wx.uploadFile({
+              url: 'https://mps.essocial.com.cn/backend/common/upload',
+              filePath: item,
+              name: 'image',
+              success: function (res) {
+                // var pic = res.data;
+                // pictures.push(pic)
+
+                resolve(res)
+              }
+            })
+
+          })
+
         })
+
+        // console.log(pictures)
+        Promise.all(pro).then(function (res) {
+         
+          res.map(item => {
+            pictures.push(item.data)
+          })
+          console.log(pictures)
+
+          that.setData({
+            addImgSrc,
+            pictures
+          })
+          // var pic = res.data;
+          // pictures.push(pic)
+        })
+
+       
+
+        
+
       }
     })
+
   },
   // 发布评论
   publishComment(e) {
@@ -74,11 +135,12 @@ Page({
     let service_level = that.data.serverAttitude;
     let logistics_level = that.data.logisService;
     let description = e.detail.value.textarea;
-    let picture = that.data.addImgSrc;
+    let picture = that.data.pictures;
+
     wx.request({
-      url: 'http://mps.essocial.com.cn/api/comment/addComment',
+      url: app.globalData.api + 'comment/addComment',
       data: {
-        program_id: 1,
+        program_id: 2,
         customer_id,
         order_code,
         description,
@@ -91,13 +153,13 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-         if(res.data.status){
-           wx.showToast({
-             title: '评论成功',
-             icon:'success',
-             duration:2000              
-           })
-         }
+        if (res.data.status) {
+          wx.showToast({
+            title: '评论成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }
       }
     })
   }
