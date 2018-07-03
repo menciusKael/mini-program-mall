@@ -1,17 +1,28 @@
-<!--pages/user/user.wxml-->
-<view class='sort'>
-  <!-- 分类tab -->
+ <view class='sort'>
+
+  
   <view class='sortBox'>
-    <text class='{{currentTab == 1 ? "slected" : "" }}' data-id="1" catchtap='choose'>分类一级</text>
-    <text class='{{currentTab == 2 ? "slected" : "" }}' data-id="2" catchtap='choose'>分类二级</text>
-    <text class='{{currentTab == 3 ? "slected" : "" }}' data-id="3" catchtap='choose'>分类三级</text>
+    <block wx:for="{{sortData}}" wx:key="a">
+      <view class='sortTab {{currentTab == item.product_group_id ? "slected" : "" }}' data-index="{{item.product_group_id}}" catchtap='choose'>{{item.name}}</view>
+    </block>
   </view>
-  <!-- tab对应内容 -->
+
+  
   <view class='sortContent'>
-    
-    <text class='{{ currentTab == 1 ? "show" : "hidden"}}'>11111</text>
-    <text class='{{ currentTab == 2 ? "show" : "hidden"}}'>22222</text>
-    <text class='{{ currentTab == 3 ? "show" : "hidden"}}'>33333</text>
+    <block wx:for="{{sortData}}" wx:key="b">
+      <view wx:if="{{currentTab == index}}">
+        <view class='proBox'>
+          <block wx:for="{{item.children}}" wx:for-item="proItem" wx:key="c">
+           
+            <view class='proItem' catchtap='toProductDetail' data-id="{{proItem.product_group_id}}">
+              <image class='proImg' src='{{proItem.picture}}' />
+              <view class='name'>{{proItem.name}}</view>
+            </view> 
+
+          </block>
+        </view>
+      </view>
+    </block>
   </view>
-<sortImg />
+
 </view>
