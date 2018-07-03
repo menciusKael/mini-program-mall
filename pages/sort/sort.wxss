@@ -1,20 +1,17 @@
-/* pages/user/user.wxss */
-.sort{
-   height: 100%;
-   box-sizing: border-box;
-   padding-left: 0rpx;
-   padding-top: 0rpx;
+
+.sort {
+  box-sizing: border-box;
+  padding-left: 220rpx;
 }
 
-.sortBox{
+.sortBox {
   height: 100%;
-  float: left;
-  margin-left: 0rpx;
-  margin-top: 0rpx;
-  background: #F6F6F6;
+  position: fixed;
+  background: #f6f6f6;
+  margin-left: -220rpx;
 }
 
-.sortBox text {
+.sortBox .sortTab {
   width: 220rpx;
   height: 80rpx;
   text-align: center;
@@ -23,20 +20,40 @@
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
   border: none;
-  cursor: pointer;
 }
-/* 选中样式 */
-.slected{
+
+.slected {
   background: white;
 }
-.show{
+
+.show {
   display: block;
 }
-.hidden{
+
+.hidden {
   display: none;
 }
 
-.sortContent{
-   background: white;
-   height: 100%;
+.sortContent {
+  background: white;
+  height: 100%;
+}
+
+.sortContent  .proBox {
+  display: flex;
+  padding: 20rpx 10rpx 0rpx 10rpx;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sortContent  .proBox .proItem {
+  flex-basis: 50%;
+  text-align: center;
+  margin-bottom: 25rpx;
+}
+
+.sortContent  .proBox .proItem .proImg {
+  width: 220rpx;
+  height: 220rpx;
 }
