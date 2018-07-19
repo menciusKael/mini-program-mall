@@ -24,6 +24,10 @@
       <view class='returnMoney'>退款金额:
         <text class='money'>￥{{returnProInfo.price}}</text>
       </view>
+      
+ <!-- 1. textarea层级最高，Model弹出时，其placeholder将在最上面，z-index无法修复，通过hidden显示/隐藏间接解决
+2. textarea默认的padding在android和ios下不统一，致使退货说明/退货信息与placeholder不在同一水平线，通过wx.getSystemInfoSync()获取设备信息兼容
+ -->
 
       <view class='userKeyIn'>
         <text class='tip'>退款说明:</text>
