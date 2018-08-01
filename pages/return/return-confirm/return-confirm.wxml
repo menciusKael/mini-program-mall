@@ -4,7 +4,7 @@
     <image class='pimg' src='{{returnProInfo.pic}}'></image>
     <view class='productInfo'>
       <text>{{returnProInfo.name}}</text>
-      <text class='label'>规格: {{returnProInfo.option}}</text>
+      <text class='label' wx:if="{{returnProInfo.option}}">规格: {{returnProInfo.option}}</text>
       <text class='price'>￥{{returnProInfo.price}}</text>
     </view>
     <view class='buyNum'>x{{returnProInfo.amount}}</view>
@@ -12,31 +12,26 @@
 
   <!-- 退款信息 -->
   <form bindsubmit='onBindReturnSubmit'>
-
     <view class='returnDetailBox'>
-
       <view class='returnReson'>
         <text>退款原因</text>
         <text wx:if="{{!returnReason}}" class='pleaseChoose' bindtap='onChooseReason'>请选择></text>
         <text wx:else class='pleaseChooseEd' bindtap='onChooseReason'>{{returnReason}}</text>
       </view>
-
       <view class='returnMoney'>退款金额:
         <text class='money'>￥{{returnProInfo.price}}</text>
       </view>
-      
- <!-- 1. textarea层级最高，Model弹出时，其placeholder将在最上面，z-index无法修复，通过hidden显示/隐藏间接解决
-2. textarea默认的padding在android和ios下不统一，致使退货说明/退货信息与placeholder不在同一水平线，通过wx.getSystemInfoSync()获取设备信息兼容
- -->
 
       <view class='userKeyIn'>
-        <text class='tip'>退款说明:</text>
-        <textarea class='tar' name="txtar1" placeholder='选填' maxlength='-1' adjust-position auto-height></textarea>
+        <view class='tip {{phoneType == "android" ? "" : "tipIos"}}'>退款说明:</view>
+        <textarea hidden='{{!textAreaShow}}' class='tar {{phoneType == "android" ? "tarAndroid" : "tarIos"}}' name="txtar1" placeholder='选填' maxlength='-1' adjust-position auto-height>
+        </textarea>
       </view>
 
       <view class='userKeyIn'>
-        <text class='tip'>退货信息:</text>
-        <textarea class='tar' name="txtar2" placeholder='请填写退货物流信息' adjust-position auto-height></textarea>
+        <view class='tip {{phoneType == "android" ? "" : "tipIos"}}'>退货信息:</view>
+        <textarea hidden='{{!textAreaShow}}' class='tar {{phoneType == "android" ? "tarAndroid" : "tarIos"}}' name="txtar2" placeholder='请填写退货物流信息' adjust-position auto-height>
+        </textarea>
       </view>
 
     </view>
