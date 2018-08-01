@@ -1,28 +1,37 @@
+var app = getApp()
 Page({
   data: {
     reasonChooseShow: false,
     returnReason: '', // 退款原因选择
     order_code: '',
-    id: ''
+    id: '',
+    textAreaShow: true,
+    phoneType: 'android' // 默认机型为安卓
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
+    let phone = wx.getSystemInfoSync(); 
+    let phoneType = phone.platform; // 调用方法获取机型  
+
     let returnProInfo = JSON.parse(options.returnProInfo)
     this.setData({
       returnProInfo,
       order_code: returnProInfo.code,
-      id: returnProInfo.id
+      id: returnProInfo.id,
+      phoneType: phoneType == 'android' ? 'android' : 'ios' // 设置机型
     })
   },
   // 退款原因选择弹出
   onChooseReason() {
     this.setData({
-      reasonChooseShow: true
+      reasonChooseShow: true,
+      textAreaShow: false
     })
   },
   // 退款原因选择隐藏
   onBindReasonConfirm() {
     this.setData({
-      reasonChooseShow: false
+      reasonChooseShow: false,
+      textAreaShow: true
     })
   },
   // 原因选择change
@@ -60,9 +69,9 @@ Page({
     }
 
     wx.request({
-      url: 'http://mps.essocial.com.cn/api/returns/addReturn',
+      url: app.globalData.api + 'returns/addReturn',
       data: {
-        program_id: 1,
+        program_id: app.globalData.program_id,
         customer_id: c_id,
         order_product_id: id,
         order_code,
@@ -77,7 +86,7 @@ Page({
             title: '申请退款成功！',
             icon: 'cuccess',
             duration: 2000,
-            success: function () {
+            success: function() {
               setTimeout(() => wx.navigateBack(), 2000)
             }
           })
