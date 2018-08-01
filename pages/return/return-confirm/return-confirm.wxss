@@ -1,3 +1,37 @@
+ .returnDetailBox .userKeyIn {
+  width: 100%;
+  margin-top: 40rpx;
+  height: auto;
+  display: flex;
+}
+
+.returnDetailBox .userKeyIn .tip {
+  flex-basis: 18%;
+  /* ios hack */
+  /* padding-top: 10rpx; */
+}
+
+.tipIos {
+  padding-top: 10rpx;
+}
+
+.returnDetailBox .userKeyIn .tar {
+  flex-basis: 82%;
+  display: block;
+  box-sizing: border-box;
+  top: 0;
+  /* android hack*/
+  /* padding-top: 7rpx !important; */
+  /* ios hack*/
+  /* padding-top: 0rpx !important; */  
+}
+.tarAndroid{
+  padding-top: 7rpx !important;
+}
+.tarIos{
+  padding-top: 0rpx !important;
+}
+
 .productInfoBox {
   display: flex;
   width: 95%;
@@ -54,9 +88,11 @@
 .returnDetailBox .returnReson .pleaseChoose {
   color: #949494;
 }
-.returnDetailBox .returnReson .pleaseChooseEd{
+
+.returnDetailBox .returnReson .pleaseChooseEd {
   color: black;
 }
+
 .returnDetailBox .returnMoney {
   margin-top: 40rpx;
 }
@@ -65,27 +101,12 @@
   color: #ff4200;
 }
 
-.returnDetailBox .userKeyIn {
-  width: 100%;
-  position: relative;
-  margin-top: 40rpx;
-}
-
-.returnDetailBox .userKeyIn  .tip {
-  position: absolute;
-  top: -3rpx;
-  left: 0rpx;
-}
-
-.returnDetailBox .userKeyIn .tar {
-  width: 83%;
-  padding-left: 130rpx;
-}
-
 /* 原因 */
+
 .chooseReasonPage {
   z-index: 10;
 }
+
 .chooseReasonPage .mask {
   position: fixed;
   top: 0;
@@ -101,7 +122,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 30;   
+  z-index: 30;
   background: white;
   border-top-left-radius: 20rpx;
   border-top-right-radius: 20rpx;
