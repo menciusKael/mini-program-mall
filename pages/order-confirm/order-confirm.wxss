@@ -1,0 +1,245 @@
+/* 地址 */
+
+page {
+  background-color: #fff;
+}
+
+.container {
+  font-size: 28rpx;
+  padding-bottom: 100rpx;
+}
+
+.adressInfoBox {
+  width: 100%;
+  background-color: #f8f8f8;
+  padding-left: 20rpx;
+  padding-top: 25rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.adressInfoBox .adressInfo {
+  display: flex;
+  flex-direction: column;
+  width: 92%;
+}
+
+.adressInfoBox .adressInfo .nameAndPhone {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.adressInfoBox .toAdress .img {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.haveNoAddress {
+  width: 100%;
+  border-top: solid 2rpx #e8e8e8;
+  border-bottom: solid 2rpx #e8e8e8;
+  padding-left: 20rpx;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.haveNoAddress .add {
+  width: 60rpx;
+  height: 60rpx;
+  background: #ff6200;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 5rpx;
+  font-size: 54rpx;
+  color: white;
+}
+
+.haveNoAddress .addWord {
+  flex-basis: 75%;
+}
+
+.haveNoAddress .toAdress .img {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 5rpx;
+}
+
+/* 商品信息 */
+
+.productInfoBox {
+  display: flex;
+  padding: 15rpx 25rpx;
+  position: relative;
+}
+
+.productInfoBox .img {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.productInfoBox .proInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 15rpx;
+}
+
+.productInfoBox .proInfo .label {
+  color: #949494;
+  white-space: nowrap;
+}
+
+.productInfoBox .proInfo .price {
+  color: #ff4200;
+}
+
+.productInfoBox .buyNum {
+  align-self: flex-end;
+  position: absolute;
+  right: 22rpx;
+  bottom: 30rpx;
+  margin-bottom: 5rpx;
+}
+
+.distribution {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid 2rpx #e8e8e8;
+  padding: 20rpx 25rpx;
+  align-items: center;
+}
+
+.distribution .cost .pri {
+  color: #ff4200;
+}
+
+/* 卡卷 */
+
+.distributionKajuan {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid 2rpx #e8e8e8;
+  padding: 20rpx 25rpx;
+  align-items: center;
+}
+
+.distributionKajuan .way .gundon {
+  color: #949494;
+}
+
+.distributionKajuan .coupons {
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 50%;
+  /* text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; */
+  text-align: right;
+}
+
+.distributionKajuan .coupons .pv {
+  height: 100%;
+}
+
+.distributionKajuan .coupons .pv .pvc .nouse {
+  color: #949494;
+  position: relative;
+  /* padding-right: 25rpx; */
+  /* color: #FF6200; */
+  display: flex;
+  justify-content: flex-end;
+}
+.distributionKajuan .coupons .pv .pvc .nouse .txt{
+  margin-right: 28rpx;
+}
+.distributionKajuan .coupons .pv .pvc .nouse .img {
+  width: 25rpx;
+  height: 25rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 15rpx;
+  margin-left: 10rpx;
+}
+
+.distributionKajuan .coupons .pv .pvc .item {
+  color: #ff4200;
+}
+
+.leaveMsg {
+  display: flex;
+  border-top: solid 2rpx #e8e8e8;
+  border-bottom: solid 2rpx #e8e8e8;
+  padding: 20rpx 25rpx;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.leaveMsg .msg {
+  width: 23%;
+}
+
+.leaveMsg .inpBox {
+  width: 77%;
+}
+
+.leaveMsg .inp {
+  width: 100%;
+}
+
+.total {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15rpx;
+  padding-right: 20rpx;
+}
+
+.total .totalNum {
+  margin-right: 20rpx;
+}
+
+.total .totalNum .num {
+  color: #ff4200;
+}
+
+.total .pri {
+  color: #ff4200;
+}
+
+.submissionOrder {
+  z-index: 10;
+  background: white;   
+  position: fixed;
+  bottom: 0;
+  border-top: solid 2rpx #e8e8e8;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 80rpx;  
+}
+
+.submissionOrder .pri {
+  color: #ff4200;
+}
+
+.submissionOrder .submiss .btn {
+  background-color: #ff6200;
+  color: white;
+  /* height: 100%; */
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 250rpx;
+  margin-left: 20rpx;
+  outline: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}

@@ -1,0 +1,149 @@
+<view class='container'>
+  <!-- 添加report-submit属性获取formId, 用于发送模版消息 -->
+  <form bindsubmit='submitOrder' report-submit>
+    <!-- 有地址 -->
+    <view class='adressInfoBox' wx:if="{{haveAddress}}" catchtap='chooseDefaultAddress'>
+      <view class='adressInfo'>
+        <view class='nameAndPhone'>
+          <view class='name'>收货人： {{defaultAddress.name}}</view>
+          <view class='phone'>收货电话：{{defaultAddress.tel}}</view>
+        </view>
+        <view class='adressDetail'>收货地址：{{defaultAddress.location}}{{defaultAddress.address}}</view>
+      </view>
+      <view class='toAdress'>
+        <image class='img' src='/images/icon/toAdress.png'></image>
+      </view>
+    </view>
+    <!-- 没有地址 -->
+    <view class='haveNoAddress' wx:if="{{!haveAddress}}" catchtap='toAddAddress'>
+      <view class='add'>+</view>
+      <view class='addWord'>新增收货地址</view>
+      <view class='toAdress'>
+        <image class='img' src='/images/icon/toAdress.png'></image>
+      </view>
+    </view>
+
+    <!-- 商品 -->
+    <!-- 购物车 -->
+    <!-- <block wx:for="{{shopList}}" wx:key="" wx:if="{{!shopType}}"> -->
+    <block wx:for="{{shopList}}" wx:key="">
+
+      <view class='productInfoBox'>
+        <view>
+          <image class='img' src='{{item.pic}}'></image>
+        </view>
+        <view class='proInfo'>
+          <view class='name'>{{item.name}}</view>
+          <!-- <view class='label'>规格："黑色"/"36"</view> -->
+          <view class='label' wx:if="{{item.size}}">{{item.size}}</view>
+          <view class='price'>￥{{item.price}}</view>
+        </view>
+        <view class='buyNum'>x{{item.buyNum}}</view>
+      </view>
+    </block>
+
+    <!-- 配送 -->
+    <view class='distribution'>
+      <view class='way'>配送方式</view>
+      <view class='cost' wx:if="{{freight}}">快递:
+        <text class='pri'>￥{{freight}}</text>
+      </view>
+      <view class='cost' wx:elif="{{!haveAddress && !freight}}">填写收货地址后可知</view>
+      <view class='cost' wx:else>包邮</view>
+    </view>
+
+    <!-- 会员 -->
+    <view class='distribution' wx:if="{{isVip}}">
+      <view class='way'>会员折扣</view>
+      <view class='cost'>会员：
+        <text class='pri'>{{discount}}折</text>
+      </view>
+    </view>
+
+    <!-- 积分抵扣、 -->
+    <view class='distributionKajuan'>
+      <view class='way'>积分抵扣
+        <!-- <text class='gundon' wx:if="{{pointAmount}}">(上下滑动选择)</text> -->
+      </view>
+      <!-- 积分选择-->
+      <view class='coupons' wx:if="{{pointAmount}}">
+        <picker-view value="" class='pv' bindchange="onBindChangePoint">
+
+          <picker-view-column class='pvc'>
+            <!-- 上下小箭头 -->
+            <view class='nouse'>
+              <text class='txt'>可选择使用积分</text>
+              <image class='img' src='/images/icon/picker.png'></image>
+            </view>
+            <!-- 使用抵扣 -->
+            <view class='item'>抵扣{{pointAmount}}元</view>
+            <!-- 不使用抵扣、 -->
+            <view class='item'>不使用积分</view>
+          </picker-view-column>
+
+        </picker-view>
+      </view>
+      <!-- 非积分商品不可使用积分 -->
+      <view wx:if="{{!pointAmount}}">非积分商品不可用 </view>
+    </view>
+
+    <!-- 优惠卷 -->
+    <view class='distributionKajuan'>
+      <view class='way'>卡卷包
+        <!-- <text class='gundon' wx:if="{{haveCoupon}}">(上下滑动选择)</text> -->
+      </view>
+      <!-- 卡卷 -->
+      <view class='coupons' wx:if="{{haveCoupon}}">
+        <picker-view value="" class='pv' bindchange="onBindChangeCoupon">
+
+          <picker-view-column class='pvc'>
+            <!-- 上下小箭头 -->
+            <view class='nouse'>
+              <text class='txt'>{{coupons.length}}张可用</text>
+              <image class='img' src='/images/icon/picker.png'></image>
+            </view>
+
+            <!-- 优惠卷-->
+            <view class='item' wx:for="{{coupons}}" wx:key="">{{item.name}}</view>
+
+          </picker-view-column>
+
+        </picker-view>
+      </view>
+      <!-- 无优惠卷 -->
+      <view wx:if="{{!haveCoupon}}">暂无优惠券可用 </view>
+    </view>
+
+
+
+    <!-- 留言 -->
+    <view class='leaveMsg'>
+      <view class='msg'>买家留言：</view>
+      <view class='inpBox'>
+        <input type='text' cursor-spacing='20' class='inp' placeholder='选填' name='remark'></input>
+      </view>
+    </view>
+
+    <!-- 合计 -->
+    <view class='total'>
+      <view class='totalNum'>共
+        <text class='num'>{{allProductNum}}</text> 件商品
+      </view>
+      <view>合计:
+        <text class='pri'>￥{{total}}</text>
+      </view>
+    </view>
+
+    <!-- 提交 -->
+    <view class='submissionOrder'>
+      <view>合计金额:
+        <!-- <text class='pri'>￥ {{(total+freight) * discount }} 元</text> -->
+        <text class='pri'>￥ {{allTotalFre}}元</text>
+      </view>
+      <view class='submiss'>
+        <button class='btn' form-type='submit'>提交订单</button>
+      </view>
+    </view>
+
+  </form>
+</view>
